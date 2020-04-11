@@ -1,0 +1,68 @@
+{
+	"name": "SourceDataset_alp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SAP_BLOB_S2P",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Test"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "Doc. No.",
+				"type": "String"
+			},
+			{
+				"name": "TCode",
+				"type": "String"
+			},
+			{
+				"name": "CoCd",
+				"type": "String"
+			},
+			{
+				"name": "Inv. Pty",
+				"type": "String"
+			},
+			{
+				"name": "St",
+				"type": "String"
+			},
+			{
+				"name": "PBk",
+				"type": "String"
+			},
+			{
+				"name": "Pstng Date",
+				"type": "String"
+			},
+			{
+				"name": "Crcy",
+				"type": "String"
+			},
+			{
+				"name": "Gross amnt",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "\t",
+				"rowDelimiter": "",
+				"quoteChar": "\"",
+				"nullValue": "\\N",
+				"encodingName": null,
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": "",
+			"folderPath": "ngbsasls2p"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

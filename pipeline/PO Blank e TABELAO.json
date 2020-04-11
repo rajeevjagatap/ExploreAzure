@@ -1,0 +1,109 @@
+{
+	"name": "PO Blank e TABELAO",
+	"properties": {
+		"activities": [
+			{
+				"name": "FBL3N_ME2N TAB FINAL",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "ME2N_CLEAN",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[FBL3N_ME2N]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabaseLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CREATE TAB PO IS BLANK",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT [G/L]\n      ,[Offst.acct]\n      ,[Plnt]\n      ,[Reference]\n      ,[Purch.Doc.]\n      ,[Item]\n      ,[CoCd]\n      ,[DocumentNo]\n      ,[Transaction Code]\n      ,[Material]\n      ,[Assignment]\n      ,[User name]\n      ,[Profit Ctr]\n      ,[Text]\n      ,[Document Header Text]\n      ,[Clrng doc.]\n      ,[Quantity]\n      ,[Amount in local cur.]\n      ,[LCurr]\n      ,[Amount in doc. curr.]\n      ,[Curr.]\n      ,[Pstng Date]\n      ,[Entry Date]\n      ,[Doc. Date]\n      ,[Cost Ctr]\n      ,[Reference Key]\n      ,[BUn]\n      ,[Eff.ex.rate]\n      ,[WBS element]\n      ,[Type]\n      ,[Order]\n      ,[Vendor]\n  FROM [gri].[FBL3N]\n  WHERE LEN(FBL3N.[CoCd]) = 4\n\tAND FBL3N.[G/L] <> 'G/L'\n\tAND (FBL3N.[Purch.Doc.] IS NULL\n\t     OR RTRIM(LTRIM(FBL3N.[Purch.Doc.])) = '')",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": {
+							"value": "TRUNCATE TABLE gri.FBL3N_PO_BLANK",
+							"type": "Expression"
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_FBL3N",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_FBL3N_PO_BLANK",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "ME2N_CLEAN",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CREATE TAB PO IS BLANK",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[ME2N_CLEAN]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabaseLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "S2P"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

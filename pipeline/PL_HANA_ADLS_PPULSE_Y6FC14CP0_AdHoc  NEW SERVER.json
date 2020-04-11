@@ -1,0 +1,901 @@
+{
+	"name": "PL_HANA_ADLS_PPULSE_Y6FC14CP0_AdHoc  NEW SERVER",
+	"properties": {
+		"activities": [
+			{
+				"name": "Select Period Metric and Zone Code",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Clear Log",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"query": {
+							"value": "SELECT \n\t\"0CALMONTH\" AS CALMONTH\n   ,\"YPPCCODE__YGZONE\" AS COMP_CODE__YGZONE\nFROM \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC14CP0\"('PLACEHOLDER' = ('$$keydate$$',  '<Enter Value>')) \nWHERE \n   \"0CALMONTH\" BETWEEN \n '@{concat(pipeline().parameters.pYearStart,pipeline().parameters.pMonthStart)}' AND '@{concat(pipeline().parameters.pYearEnd,pipeline().parameters.pMonthEnd)}'\nGROUP BY \n\t\"0CALMONTH\"\n   ,\"YPPCCODE__YGZONE\"",
+							"type": "Expression"
+						},
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_PROD_HANA_Y6FC10CP0",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Select Period Metric and Zone Code",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Select Period Metric and Zone Code').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy Y6FC14CP0",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "INSERT_INTO_LOG",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SapHanaSource",
+									"query": {
+										"value": "SELECT\t\n\t \"0AC_DOC_NO\",\n\t \"0AC_DOC_TYP\",\n\t \"0AC_DOC_TYP___T\",\n\t \"0CALMONTH\",\n\t \"0CALYEAR\",\n\t \"0CHRT_ACCTS\",\n\t \"0CHRT_ACCTS___T\",\n\t \"0CURRENCY\",\n\t \"0GL_ACCOUNT\",\n\t \"0INFOPROV\",\n\t \"0INV_DOC_NO\",\n\t \"0RECORDTP\",\n\t \"0REQTSN\",\n\t \"0VENDOR\",\n\t \"0VENDOR___T\",\n\t \"4Y6FC14CP0_ACTOR\",\n\t \"4Y6FC14CP0_POINT\",\n\t \"4Y6FC14CP0_REASON_CODE\",\n\t \"4Y6FC14CP0_VENDOR_NAME\",\n\t \"4Y6FC14CP0_WORKITEM_ID\",\n\t \"4Y6FC14CP0_WORK_ITEM\",\n\t \"4Y6FC14CP0_YPPAP07F\",\n\t \"YGTQNAME\",\n\t \"YPPCCODE\",\n\t \"YPPCCODE__YGZONE\",\n\t \"YPPPROV\",\n\t \"YPPRESPDT\",\n\t \"YPPSSC\",\n\t \"YPPSTAGE\",\n\t \"YPPSUBMDT\",\n         'AP07' AS \"YPPMETRIC\",\n\t sum(\"0AMOUNT\") AS \"0AMOUNT\",\n\t sum(\"4Y6FC14CP0_REC_COUNT\") AS \"REC_COUNT\",\n\t sum(\"YPPMETKP\") AS \"YPPMETKP\",\n\t max(\"YPPTRGT\") AS \"YPPTRGT\",\n\t sum(\"1ROWCOUNT\") AS \"1ROWCOUNT\" \n FROM \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC14CP0\"('PLACEHOLDER' = ('$$keydate$$', '<Enter Value>')) \t\n WHERE \"0CALMONTH\" = '@{item().CALMONTH}'\t\n  AND \"YPPCCODE__YGZONE\" = '@{item().COMP_CODE__YGZONE}'\t\nGROUP BY \t\n\t \"0AC_DOC_NO\",\n\t \"0AC_DOC_TYP\",\n\t \"0AC_DOC_TYP___T\",\n\t \"0CALMONTH\",\n\t \"0CALYEAR\",\n\t \"0CHRT_ACCTS\",\n\t \"0CHRT_ACCTS___T\",\n\t \"0CURRENCY\",\n\t \"0GL_ACCOUNT\",\n\t \"0INFOPROV\",\n\t \"0INV_DOC_NO\",\n\t \"0RECORDTP\",\n\t \"0REQTSN\",\n\t \"0VENDOR\",\n\t \"0VENDOR___T\",\n\t \"4Y6FC14CP0_ACTOR\",\n\t \"4Y6FC14CP0_POINT\",\n\t \"4Y6FC14CP0_REASON_CODE\",\n\t \"4Y6FC14CP0_VENDOR_NAME\",\n\t \"4Y6FC14CP0_WORKITEM_ID\",\n\t \"4Y6FC14CP0_WORK_ITEM\",\n\t \"4Y6FC14CP0_YPPAP07F\",\n\t \"YGTQNAME\",\n\t \"YPPCCODE\",\n\t \"YPPCCODE__YGZONE\",\n\t \"YPPPROV\",\n\t \"YPPRESPDT\",\n\t \"YPPSSC\",\n\t \"YPPSTAGE\",\n\t \"YPPSUBMDT\"",
+										"type": "Expression"
+									},
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "AzureSqlSink"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "0AC_DOC_NO"
+											},
+											"sink": {
+												"name": "0AC_DOC_NO",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0AC_DOC_TYP"
+											},
+											"sink": {
+												"name": "0AC_DOC_TYP",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0AC_DOC_TYP___T"
+											},
+											"sink": {
+												"name": "0AC_DOC_TYP___T",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0CALMONTH"
+											},
+											"sink": {
+												"name": "0CALMONTH",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0CALYEAR"
+											},
+											"sink": {
+												"name": "0CALYEAR",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0CHRT_ACCTS"
+											},
+											"sink": {
+												"name": "0CHRT_ACCTS",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0CHRT_ACCTS___T"
+											},
+											"sink": {
+												"name": "0CHRT_ACCTS___T",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0CURRENCY"
+											},
+											"sink": {
+												"name": "0CURRENCY",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0GL_ACCOUNT"
+											},
+											"sink": {
+												"name": "0GL_ACCOUNT",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0INFOPROV"
+											},
+											"sink": {
+												"name": "0INFOPROV",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0INV_DOC_NO"
+											},
+											"sink": {
+												"name": "0INV_DOC_NO",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0RECORDTP"
+											},
+											"sink": {
+												"name": "0RECORDTP",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0REQTSN"
+											},
+											"sink": {
+												"name": "0REQTSN",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0VENDOR"
+											},
+											"sink": {
+												"name": "0VENDOR",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0VENDOR___T"
+											},
+											"sink": {
+												"name": "0VENDOR___T",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "4Y6FC14CP0_ACTOR"
+											},
+											"sink": {
+												"name": "4Y6FC14CP0_ACTOR",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "4Y6FC14CP0_POINT"
+											},
+											"sink": {
+												"name": "4Y6FC14CP0_POINT",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "4Y6FC14CP0_REASON_CODE"
+											},
+											"sink": {
+												"name": "4Y6FC14CP0_REASON_CODE",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "4Y6FC14CP0_VENDOR_NAME"
+											},
+											"sink": {
+												"name": "4Y6FC14CP0_VENDOR_NAME",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "4Y6FC14CP0_WORKITEM_ID"
+											},
+											"sink": {
+												"name": "4Y6FC14CP0_WORKITEM_ID",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "4Y6FC14CP0_WORK_ITEM"
+											},
+											"sink": {
+												"name": "4Y6FC14CP0_WORK_ITEM",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "4Y6FC14CP0_YPPAP07F"
+											},
+											"sink": {
+												"name": "4Y6FC14CP0_YPPAP07F",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YGTQNAME"
+											},
+											"sink": {
+												"name": "YGTQNAME",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPCCODE"
+											},
+											"sink": {
+												"name": "YPPCCODE",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPCCODE__YGZONE"
+											},
+											"sink": {
+												"name": "0COMP_CODE__YGZONE",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPPROV"
+											},
+											"sink": {
+												"name": "YPPPROV",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPRESPDT"
+											},
+											"sink": {
+												"name": "YPPRESPDT",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPSSC"
+											},
+											"sink": {
+												"name": "YPPSSC",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPSTAGE"
+											},
+											"sink": {
+												"name": "YPPSTAGE",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPSUBMDT"
+											},
+											"sink": {
+												"name": "YPPSUBMDT",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "0AMOUNT"
+											},
+											"sink": {
+												"name": "0AMOUNT",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "REC_COUNT"
+											},
+											"sink": {
+												"name": "REC_COUNT",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPMETKP"
+											},
+											"sink": {
+												"name": "YPPMETKP",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPTRGT"
+											},
+											"sink": {
+												"name": "YPPTRGT",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "1ROWCOUNT"
+											},
+											"sink": {
+												"name": "1ROWCOUNT",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "YPPMETRIC"
+											},
+											"sink": {
+												"name": "YPPMETRIC",
+												"type": "String"
+											}
+										}
+									]
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_PROD_HANA_Y6FC10CP0",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_PROD_SQLSERVER_PPULSE_Y6FC14CP0",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Composite to Metric",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "UPDATE_STATUS_COPY",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[CompositeToMetricTable]",
+								"storedProcedureParameters": {
+									"p_vMetric": {
+										"value": "AP07",
+										"type": "String"
+									},
+									"p_vPeriod": {
+										"value": {
+											"value": "@{item().CALMONTH}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vSchema": {
+										"value": "pps",
+										"type": "String"
+									},
+									"p_vTable": {
+										"value": "Y6FC14CP0",
+										"type": "String"
+									},
+									"p_vZone": {
+										"value": {
+											"value": "@{item().COMP_CODE__YGZONE}",
+											"type": "Expression"
+										},
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "LS_AZURE_SQLDB_PPULSE",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "INSERT_INTO_LOG",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[STATUS_PP_SETLOG]",
+								"storedProcedureParameters": {
+									"p_vCalmonth": {
+										"value": {
+											"value": "@{item().CALMONTH}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vComposite": {
+										"value": "Y6FC14CP0",
+										"type": "String"
+									},
+									"p_vYppmetric": {
+										"value": "AP07",
+										"type": "String"
+									},
+									"p_vYgzone": {
+										"value": {
+											"value": "@{item().COMP_CODE__YGZONE}",
+											"type": "Expression"
+										},
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "LS_AZURE_SQLDB_PPULSE",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "Progress Status Error",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Copy Y6FC14CP0",
+									"dependencyConditions": [
+										"Failed"
+									]
+								},
+								{
+									"activity": "Composite to Metric",
+									"dependencyConditions": [
+										"Failed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_PROGRESS]",
+								"storedProcedureParameters": {
+									"p_vCalmonth": {
+										"value": {
+											"value": "@{item().CALMONTH}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vYgzone": {
+										"value": {
+											"value": "@{item().COMP_CODE__YGZONE}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vYppmetric": {
+										"value": "AP07",
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "LS_AZURE_SQLDB_PPULSE",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "UPDATE_STATUS_COPY",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Copy Y6FC14CP0",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_COPYBW]",
+								"storedProcedureParameters": {
+									"p_vCalmonth": {
+										"value": {
+											"value": "@{item().CALMONTH}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vYgzone": {
+										"value": {
+											"value": "@{item().COMP_CODE__YGZONE}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vYppmetric": {
+										"value": "AP07",
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "LS_AZURE_SQLDB_PPULSE",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "UPDATE_STATUS_SP",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Composite to Metric",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_SP]",
+								"storedProcedureParameters": {
+									"p_vCalmonth": {
+										"value": {
+											"value": "@{item().CALMONTH}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vYgzone": {
+										"value": {
+											"value": "@{item().COMP_CODE__YGZONE}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vYppmetric": {
+										"value": "AP07",
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "LS_AZURE_SQLDB_PPULSE",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "Progress Status",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "UPDATE_STATUS_SP",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_PROGRESS]",
+								"storedProcedureParameters": {
+									"p_vCalmonth": {
+										"value": {
+											"value": "@{item().CALMONTH}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vYgzone": {
+										"value": {
+											"value": "@{item().COMP_CODE__YGZONE}",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"p_vYppmetric": {
+										"value": "AP07",
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "LS_AZURE_SQLDB_PPULSE",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Truncate Composite Table",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Remove Column Store Index",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[TruncateAnyTable]",
+					"storedProcedureParameters": {
+						"vSchema": {
+							"value": "pps",
+							"type": "String"
+						},
+						"vTable": {
+							"value": "Y6FC14CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Remove Column Store Index",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[RemoveColumnstoreIndex]",
+					"storedProcedureParameters": {
+						"p_vOption": {
+							"value": "Y6FC14CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Clear Log",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Truncate Composite Table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[STATUS_PP_CLEAN]",
+					"storedProcedureParameters": {
+						"p_vComposite": {
+							"value": "Y6FC14CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Create database indexes",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AddColumnstoreIndex]",
+					"storedProcedureParameters": {
+						"p_vOption": {
+							"value": "Y6FC14CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"pYearStart": {
+				"type": "string",
+				"defaultValue": "2019"
+			},
+			"pMonthStart": {
+				"type": "string",
+				"defaultValue": "01"
+			},
+			"pYearEnd": {
+				"type": "string",
+				"defaultValue": "2019"
+			},
+			"pMonthEnd": {
+				"type": "string",
+				"defaultValue": "01"
+			}
+		},
+		"variables": {
+			"vYear": {
+				"type": "String"
+			},
+			"vMonth": {
+				"type": "String"
+			},
+			"Period": {
+				"type": "Array"
+			},
+			"Metric": {
+				"type": "Array"
+			},
+			"ZoneCode": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "Performance Pulse/AdHoc Period Fixed New Server"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

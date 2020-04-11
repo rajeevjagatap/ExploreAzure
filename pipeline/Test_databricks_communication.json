@@ -1,0 +1,60 @@
+{
+	"name": "Test_databricks_communication",
+	"properties": {
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/iLearn/NB_ILEARN_POST_API"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Append Variable1",
+				"type": "AppendVariable",
+				"dependsOn": [
+					{
+						"activity": "Notebook1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "atest",
+					"value": {
+						"value": "@activity('Notebook1').output.runOutput.value[0]",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"stest": {
+				"type": "String"
+			},
+			"atest": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "iLearn"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

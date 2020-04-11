@@ -1,0 +1,261 @@
+{
+	"name": "Company Code Dimension",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"query": {
+							"value": "SELECT \n \"0COMP_CODE\" AS \"COMPANYCODE\"\n, \"0COMP_CODE___T\" AS \"COMPANYNAME\"\n, \"0COMP_CODE__0COUNTRY\" AS \"COUNTRYCODE\"\n, \"0COMP_CODE__0COUNTRY___T\" AS \"COUNTRYNAME\"\n, \"0COMP_CODE__YGMARKET\" AS \"MARKETCODE\"\n, \"0COMP_CODE__YGMARKET___T\" AS \"MARKETNAME\"\n, \"0COMP_CODE__YGZONE\" AS \"ZONECODE\"\n, \"0COMP_CODE__YGZONE___T\" AS \"ZONENAME\"\n, \"YPPCCODE__YPPVCNTRY\" AS \"VIRTUALCOUNTRYCODE\"\n, \"YPPCCODE__YPPVCNTRY___T\" AS \"VIRTUALCOUNTRYNAME\"\n, sum(\"YPPMETKP\") AS \"YPPMETKP\"\nFROM \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC10CP0\"('PLACEHOLDER' = ('$$keydate$$', '<Enter Value>'))\nGROUP BY \n \"0COMP_CODE\"\n, \"0COMP_CODE___T\" \n, \"0COMP_CODE__0COUNTRY\" \n, \"0COMP_CODE__0COUNTRY___T\" \n, \"0COMP_CODE__YGMARKET\" \n, \"0COMP_CODE__YGMARKET___T\"\n, \"0COMP_CODE__YGZONE\" \n, \"0COMP_CODE__YGZONE___T\"\n, \"YPPCCODE__YPPVCNTRY\"\n, \"YPPCCODE__YPPVCNTRY___T\"\nUNION\nSELECT \n \"0COMP_CODE\" AS \"COMPANYCODE\"\n, \"0COMP_CODE___T\" AS \"COMPANYNAME\"\n, \"0COMP_CODE__0COUNTRY\" AS \"COUNTRYCODE\"\n, \"0COMP_CODE__0COUNTRY___T\" AS \"COUNTRYNAME\"\n, \"0COMP_CODE__YGMARKET\" AS \"MARKETCODE\"\n, \"0COMP_CODE__YGMARKET___T\" AS \"MARKETNAME\"\n, \"0COMP_CODE__YGZONE\" AS \"ZONECODE\"\n, \"0COMP_CODE__YGZONE___T\" AS \"ZONENAME\"\n, \"YPPCCODE__YPPVCNTRY\" AS \"VIRTUALCOUNTRYCODE\"\n, \"YPPCCODE__YPPVCNTRY___T\" AS \"VIRTUALCOUNTRYNAME\"\n, sum(\"YPPMETKP\") AS \"YPPMETKP\"\n FROM \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC11CP0\"('PLACEHOLDER' = ('$$keydate$$', '<Enter Value>'), 'PLACEHOLDER' = ('$$IP_CALYEAR$$', '2019')) \n GROUP BY \n \"0COMP_CODE\"\n, \"0COMP_CODE___T\" \n, \"0COMP_CODE__0COUNTRY\" \n, \"0COMP_CODE__0COUNTRY___T\" \n, \"0COMP_CODE__YGMARKET\" \n, \"0COMP_CODE__YGMARKET___T\"\n, \"0COMP_CODE__YGZONE\" \n, \"0COMP_CODE__YGZONE___T\"\n, \"YPPCCODE__YPPVCNTRY\"\n, \"YPPCCODE__YPPVCNTRY___T\"\n UNION \n SELECT \n \"0COMP_CODE\" AS \"COMPANYCODE\"\n, \"0COMP_CODE___T\" AS \"COMPANYNAME\"\n, \"0COMP_CODE__0COUNTRY\" AS \"COUNTRYCODE\"\n, \"0COMP_CODE__0COUNTRY___T\" AS \"COUNTRYNAME\"\n, \"0COMP_CODE__YGMARKET\" AS \"MARKETCODE\"\n, \"0COMP_CODE__YGMARKET___T\" AS \"MARKETNAME\"\n, \"0COMP_CODE__YGZONE\" AS \"ZONECODE\"\n, \"0COMP_CODE__YGZONE___T\" AS \"ZONENAME\"\n, \"YPPCCODE__YPPVCNTRY\" AS \"VIRTUALCOUNTRYCODE\"\n, \"YPPCCODE__YPPVCNTRY___T\" AS \"VIRTUALCOUNTRYNAME\"\n, sum(\"YPPMETKP\") AS \"YPPMETKP\"\n FROM \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC18CP0\"('PLACEHOLDER' = ('$$keydate$$', '<Enter Value>'), 'PLACEHOLDER' = ('$$IP_CALYEAR$$', '2019')) \n GROUP BY \n \"0COMP_CODE\"\n, \"0COMP_CODE___T\" \n, \"0COMP_CODE__0COUNTRY\" \n, \"0COMP_CODE__0COUNTRY___T\" \n, \"0COMP_CODE__YGMARKET\" \n, \"0COMP_CODE__YGMARKET___T\"\n, \"0COMP_CODE__YGZONE\" \n, \"0COMP_CODE__YGZONE___T\"\n, \"YPPCCODE__YPPVCNTRY\"\n, \"YPPCCODE__YPPVCNTRY___T\"",
+							"type": "Expression"
+						},
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": {
+							"value": "TRUNCATE TABLE [pps].[Shared Dim Company Code Temp]",
+							"type": "Expression"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "COMPANYCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMPANYCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMPANYNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMPANYNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRYCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRYCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRYNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRYNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKETCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MARKETCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKETNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MARKETNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ZONECODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ZONECODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ZONENAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ZONENAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VIRTUALCOUNTRYCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VIRTUALCOUNTRYCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VIRTUALCOUNTRYNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VIRTUALCOUNTRYNAME",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Y6FCPWCP3or5HanaTable",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_SHARED_DIM_COMPANY_CODE",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy Data2",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy Data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT \n[COMPANYCODE]\n,[COMPANYNAME]\n,[COUNTRYCODE]\n,[COUNTRYNAME]\n,[MARKETCODE]\n,[MARKETNAME]\n,[ZONECODE]\n,[ZONENAME]\n,[VIRTUALCOUNTRYCODE]\n,[VIRTUALCOUNTRYNAME]\nFROM [pps].[Shared Dim Company Code TEMP]\nWHERE [COMPANYCODE] NOT IN (SELECT DISTINCT [COMPANYCODE] FROM [pps].[Shared Dim Company Code] )\nGROUP BY \n[COMPANYCODE]\n,[COMPANYNAME]\n,[COUNTRYCODE]\n,[COUNTRYNAME]\n,[MARKETCODE]\n,[MARKETNAME]\n,[ZONECODE]\n,[ZONENAME]\n,[VIRTUALCOUNTRYCODE]\n,[VIRTUALCOUNTRYNAME]",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_SHARED_DIM_COMPANY_CODE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_SHARED_COMPANY_CODE_TARGET",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy data3",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy Data2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "UPDATE [pps].[Shared Dim Company Code] SET [ZONENAME] = 'AOA' WHERE [ZONECODE] = '00000002'; \nUPDATE [pps].[Shared Dim Company Code] SET [ZONENAME] = 'AMS' WHERE [ZONECODE] = '00000003'; \n",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_SHARED_COMPANY_CODE_TARGET",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_SHARED_COMPANY_CODE_TARGET",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"pYear": {
+				"type": "string",
+				"defaultValue": "2019"
+			},
+			"pMonth": {
+				"type": "string",
+				"defaultValue": "01"
+			}
+		},
+		"folder": {
+			"name": "Performance Pulse/Shared Dim"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

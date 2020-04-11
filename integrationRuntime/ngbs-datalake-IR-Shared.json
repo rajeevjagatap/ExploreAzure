@@ -1,0 +1,13 @@
+{
+	"name": "ngbs-datalake-IR-Shared",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Shared Integration Runtime - Managed by BSI\nAPPROVED to connect to On-Premise BW/DSR/SQL/Oracle. \nNOT APPROVED to connect to On-Premise SAP Mono (R3 systems)",
+		"typeProperties": {
+			"linkedInfo": {
+				"resourceId": "/subscriptions/a6c9f13d-be73-4227-b485-c7a16289be08/resourcegroups/bsimgd-pr-glb-usw2-rg-001/providers/Microsoft.DataFactory/factories/BSIMgd-pr-usw2-ADF-001/integrationruntimes/BSIMgd-pr-usw2-IR-001",
+				"authorizationType": "Rbac"
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name": "Y6FCPWCP3or5HanaTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SAPHANA_PerformancePulse",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SapHanaTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

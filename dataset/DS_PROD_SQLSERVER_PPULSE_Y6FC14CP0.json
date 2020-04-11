@@ -1,0 +1,158 @@
+{
+	"name": "DS_PROD_SQLSERVER_PPULSE_Y6FC14CP0",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE_SQLDB_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "0AC_DOC_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0AC_DOC_TYP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0AC_DOC_TYP___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CALMONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CALYEAR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CHRT_ACCTS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CHRT_ACCTS___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CURRENCY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0GL_ACCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0INFOPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0INV_DOC_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0RECORDTP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0REQTSN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0VENDOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0VENDOR___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC14CP0_ACTOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC14CP0_POINT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC14CP0_REASON_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC14CP0_VENDOR_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC14CP0_WORKITEM_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC14CP0_WORK_ITEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC14CP0_YPPAP07F",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YGTQNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPCCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPCCODE__YGZONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPRESPDT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSSC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSTAGE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSUBMDT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0AMOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REC_COUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETKP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPTRGT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "1ROWCOUNT",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "pps",
+			"table": "Y6FC14CP0"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,49 @@
+{
+	"name": "Dim Metric",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RelationalSource",
+						"query": {
+							"value": "SELECT \n \"YPPMETRIC\" AS MetricCode\n,\"YPPMETRIC___T\" AS MetricName\n,\"YPPMETRIC__YPPCUSTF\" AS MetricCustF\n,\"YPPMETRIC__YPPE2E\" AS MetricE2E\n,\"YPPMETRIC__YPPLINE\" AS MetricServLine\n,\"YPPMETRIC__YPPMETYP___T\" AS MetricType\n,\"YPPMETRIC__YPPTOWER\" AS MetricTower\nFROM\n    \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC11CP0\"\nWHERE\n    \"0CALMONTH\" >= '@{concat(pipeline().parameters.pYear,pipeline().parameters.pMonth)}'\nGROUP BY\n \"YPPMETRIC\"\n,\"YPPMETRIC___T\" \n,\"YPPMETRIC__YPPCUSTF\"\n,\"YPPMETRIC__YPPE2E\"\n,\"YPPMETRIC__YPPLINE\"\n,\"YPPMETRIC__YPPMETYP___T\"\n,\"YPPMETRIC__YPPTOWER\"",
+							"type": "Expression"
+						}
+					},
+					"dataset": {
+						"referenceName": "DS_PROD_HANA_Y6FC10CP0",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"parameters": {
+			"pYear": {
+				"type": "string",
+				"defaultValue": "2019"
+			},
+			"pMonth": {
+				"type": "string",
+				"defaultValue": "01"
+			}
+		},
+		"folder": {
+			"name": "Performance Pulse/Shared Dim"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

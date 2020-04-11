@@ -1,0 +1,22 @@
+{
+	"name": "DelimitedText_ILearn_folder_Test",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_DATALAKE_ILEARN",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureDataLakeStoreLocation",
+				"folderPath": "dev/inbound/test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

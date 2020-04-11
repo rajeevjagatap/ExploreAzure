@@ -1,0 +1,171 @@
+{
+	"name": "pl_md_bw_comp_code",
+	"properties": {
+		"activities": [
+			{
+				"name": "load comp_code",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Stored Procedure to Clear Az Company Code",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"query": "SELECT \n  \"0COMP_CODE\" AS \"COMPANYCODE\"\n, \"0COMP_CODE___T\" AS \"COMPANYNAME\"\n, \"0COUNTRY\" AS \"COUNTRYCODE\"\n, \"0COUNTRY___T\" AS \"COUNTRYNAME\"\n, \"YGMARKET\" AS \"MARKETCODE\"\n, \"YGMARKET___T\" AS \"MARKETNAME\"\n, \"YGZONE\" AS \"ZONECODE\"\n, \"YGZONE___T\" AS \"ZONENAME\"\n\n\nFROM \"_SYS_BIC\".\"system-local.bw.bw2hana.0/COMP_CODE\"\n\nGROUP BY \n\"0COMP_CODE\",\n\t \"0COMP_CODE___T\",\n\t \n\t \"0COUNTRY\",\n\t \"0COUNTRY___T\",\t \n\t \"YGMARKET\",\n\t \"YGMARKET___T\",\n\t \"YGZONE\",\n\t \"YGZONE___T\"",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "COMPANYCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMPANYCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMPANYNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMPANYNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRYCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRYCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRYNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRYNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKETCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MARKETCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKETNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MARKETNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ZONECODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ZONECODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ZONENAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ZONENAME",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ls_comp_coda",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ls_comp_code_sql",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Stored Procedure to Clear Az Company Code",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[TruncateAnyTable]",
+					"storedProcedureParameters": {
+						"vSchema": {
+							"value": "pps",
+							"type": "String"
+						},
+						"vTable": {
+							"value": "Az Company Code",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Performance Pulse/Pulse"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

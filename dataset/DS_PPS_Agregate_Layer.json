@@ -1,0 +1,65 @@
+{
+	"name": "DS_PPS_Agregate_Layer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SQLSERVER_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "0CALMONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSSC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSTAGE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YDEN01",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "YNUM01",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "YPPTRGT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "1ROWCOUNT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[pps].[Aggregated Layer]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

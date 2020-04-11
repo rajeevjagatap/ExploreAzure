@@ -1,0 +1,94 @@
+{
+	"name": "UPDATE ME2N",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_GRIR_ME2N",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "me2n/"
+					},
+					{
+						"name": "Destination",
+						"value": "[gri].[ME2N]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE gri.ME2N"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "LS_PROD_SAP_BLOB_S2P",
+							"type": "LinkedServiceReference"
+						},
+						"path": "azure-webjobs-hosts"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Purch.Doc.": "Purch.Doc.",
+							"Item": "Item",
+							"Cat": "Cat",
+							"Created by": "Created by",
+							"Vendor/supplying plant": "Vendor/supplying plant",
+							"Ship To Name": "Ship To Name",
+							"Plnt": "Plant",
+							"PGr": "PGr",
+							"BillOfLad.": "BillOfLad.",
+							"Matl Group": "Matl Group",
+							"Material": "Material",
+							"Short Text": "Short Text",
+							"Material Description": "Material Description",
+							"A": "A",
+							"D": "D",
+							"TrackingNo": "TrackingNo",
+							"Grp": "Grp",
+							"Strat": "Strat",
+							"Our Ref.": "Our Ref.",
+							"      Quantity": "Quantity",
+							"     Net Value": "Net Value",
+							"POrg": "POrg",
+							"File Name\r": "File Name"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureBlob_me2n",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SqlServerTable_GRI_ME2N",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "S2P"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

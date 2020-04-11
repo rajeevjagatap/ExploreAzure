@@ -1,0 +1,306 @@
+{
+	"name": "UPDATE COMPOSITE 12 - SPLIT",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "Copy2",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RelationalSource",
+									"query": {
+										"value": "SELECT\n\t \"0AC_DOC_NO\",\n\t \"0AC_DOC_TYP\",\n\t \"0AC_DOC_TYP___T\",\n\t \"0CALMONTH\",\n\t \"0CALMONTH___T\",\n\t \"0CALYEAR\",\n\t \"0CHRT_ACCTS\",\n\t \"0CHRT_ACCTS___T\",\n\t \"0CLEAR_DATE\",\n\t \"0CLEAR_DATE___T\",\n\t \"0CLIENT\",\n\t \"0COMP_CODE\",\n\t \"0COMP_CODE___T\",\n\t \"0COMP_CODE__0COUNTRY\",\n\t \"0COMP_CODE__0COUNTRY___T\",\n\t \"0COMP_CODE__YGMARKET\",\n\t \"0COMP_CODE__YGMARKET___T\",\n\t \"0COMP_CODE__YGZONE\",\n\t \"0COMP_CODE__YGZONE___T\",\n\t \"0CSM_USER\",\n\t \"0CSM_USER___T\",\n\t \"0CURRENCY\",\n\t \"0CURRENCY___T\",\n\t \"4Y6FC12CP0_DATEFROM\" AS \"0DATEFROM\",\n\t \"4Y6FC12CP0_DATEFROM___T\" AS \"0DATEFROM___T\",\n\t \"0DATETO\",\n\t \"0DATETO___T\",\n\t \"0DEBITOR\",\n\t \"0DEBITOR___T\",\n\t \"0DISTR_CHAN\",\n\t \"0DISTR_CHAN___T\",\n\t \"0DOC_CURRCY\",\n\t \"0DOC_CURRCY___T\",\n\t \"4Y6FC12CP0_0DOC_DATE\" AS \"0DOC_DATE\",\n\t \"4Y6FC12CP0_0DOC_DATE___T\" AS \"0DOC_DATE___T\",\n\t \"0FISCPER\",\n\t \"0FISCVARNT\",\n\t \"4Y6FC12CP0_FI_AWTYP\" AS \"0FI_AWTYP\",\n\t \"4Y6FC12CP0_FI_AWTYP___T\" AS \"0FI_AWTYP___T\",\n\t \"0FI_DBCRIND\",\n\t \"0FI_DSBITEM\",\n\t \"0GL_ACCOUNT\",\n\t \"0GL_ACCOUNT___T\",\n\t \"0INFOPROV\",\n\t \"0INV_DOC_NO\",\n\t \"0ITEM_NUM\",\n\t \"0LOC_CURRCY\",\n\t \"0LOC_CURRCY___T\",\n\t \"0LOGSYS\",\n\t \"4Y6FC12CP0_0NETDUEDATE\" AS \"0NETDUEDATE\",\n\t \"4Y6FC12CP0_0NETDUEDATE___T\" AS \"0NETDUEDATE___T\",\n\t \"0POST_KEY\",\n\t \"0PSTNG_DATE\",\n\t \"0PSTNG_DATE___T\",\n\t \"0SALESORG\",\n\t \"0SALESORG___T\",\n\t \"0USERNAME\",\n\t \"4Y6FC12CP0_BIC_YNEWVALU\",\n\t \"4Y6FC12CP0_BIC_YOBJECTI\",\n\t \"4Y6FC12CP0_CREATEDON\",\n\t \"4Y6FC12CP0_CREATEDON___T\",\n\t \"4Y6FC12CP0_CREATIONGDAT\",\n\t \"4Y6FC12CP0_DATETIMEF04\",\n\t \"4Y6FC12CP0_DATETIMEL04\",\n\t \"4Y6FC12CP0_HISTCOORD\",\n\t \"4Y6FC12CP0_HISTPROCE\",\n\t \"4Y6FC12CP0_RECEIVINGDAT\",\n\t \"4Y6FC12CP0_SLVALIDFROM\",\n\t \"4Y6FC12CP0_SLVALIDFROM___T\",\n\t \"4Y6FC12CP0_SLVALIDTO\",\n\t \"4Y6FC12CP0_SLVALIDTO___T\",\n\t \"4Y6FC12CP0_STATUSRDATE\",\n\t \"4Y6FC12CP0_STATUSTDATE\",\n\t \"4Y6FC12CP0_UDATE1\",\n\t \"4Y6FC12CP0_UDATE1___T\",\n\t \"4Y6FC12CP0_VALUE_NEW1\",\n\t \"4Y6FC12CP0_YBDAYSRE\",\n\t \"4Y6FC12CP0_YDCAGE\",\n\t \"4Y6FC12CP0_YDOC_NUMBER\",\n\t \"4Y6FC12CP0_YFIBEGDA1\",\n\t \"4Y6FC12CP0_YFIBEGDA1___T\",\n\t \"4Y6FC12CP0_YFIBEGDA2\",\n\t \"4Y6FC12CP0_YFIBEGDA2___T\",\n\t \"4Y6FC12CP0_YFIBEGDA3\",\n\t \"4Y6FC12CP0_YFIBEGDA3___T\",\n\t \"4Y6FC12CP0_YFIBEGDA4\",\n\t \"4Y6FC12CP0_YFIBEGDA4___T\",\n\t \"4Y6FC12CP0_YFIWKDS1\",\n\t \"4Y6FC12CP0_YGTNINVO\",\n\t \"4Y6FC12CP0_YGTPGTXT\",\n\t \"4Y6FC12CP0_YGTPSTAT\",\n\t \"4Y6FC12CP0_YGTPSTD\",\n\t \"4Y6FC12CP0_YGTPSTD___T\",\n\t \"4Y6FC12CP0_YGTPTNUM\",\n\t \"4Y6FC12CP0_Y_CL_PER\",\n\t \"CCSM_CLDA\",\n\t \"CCSM_CLDA___T\",\n\t \"CCSM_CRDA\",\n\t \"CCSM_CRDA___T\",\n\t \"CCSM_PROC\",\n\t \"CCSM_RCOD\",\n\t \"CCSM_RCOD___T\",\n\t \"CCSM_SPRO\",\n\t \"CCSM_SPRO___T\",\n\t \"CCSM_STAT\",\n\t \"CCSM_STAT___T\",\n\t \"CCSM_TYPE\",\n\t \"CCSM_TYPE___T\",\n\t \"CDPM_COOR\",\n\t \"CDPM_DCAS\",\n\t \"CDPM_DCAS___T\",\n\t \"CDPM_DCAS__0G_CWWSCR\",\n\t \"CDPM_DCAS__0G_CWWSCR___T\",\n\t \"CDPM_PROS\",\n\t \"CDPM_STAT\",\n\t \"CDPM_STAT___T\",\n\t \"YBDAYS\",\n\t \"YBDAYSCO\",\n\t \"4Y6FC12CP0_YBDAYSPR\" AS \"YBDAYSPR\",\n\t \"YDMAUTSTA\",\n\t \"YDMAUTSTA___T\",\n\t \"YDMDATFRM\",\n\t \"YDMDATFRM___T\",\n\t \"YDMDATTO\",\n\t \"YDMDATTO___T\",\n\t \"4Y6FC12CP0_YDM_PROSN\" AS \"YDM_PROSN\",\n\t \"4Y6FC12CP0_YFCCLAIM\" AS \"YFCCLAIM\",\n\t \"4Y6FC12CP0_YFCCLAIM___T\" AS \"YFCCLAIM___T\",\n\t \"YFIWKDS\",\n\t \"YGTKTAAR\",\n\t \"YGTKTAAR___T\",\n\t \"YGTKTAST\",\n\t \"YGTKTAST___T\",\n\t \"YGTPPCDT\",\n\t \"YGTPPCDT___T\",\n\t \"YGT_AWKEY\",\n\t \"YINFOPROV\",\n\t \"YPPMETRIC\",\n\t \"YPPMETRIC___T\",\n\t \"YPPPROV\",\n\t \"YPPPROV___T\",\n\t \"YPPSSC\",\n\t \"YPPSSC___T\",\n\t \"YPPSTAGE\",\n\t \"YPPSTAGE___T\",\n\t \"YVEMAIL\",\n\t \"Y_EXTRDAT\",\n\t \"Y_EXTRDAT___T\",\n\t sum(\"4Y6FC12CP0_CREDIT_DC\") AS \"0CREDIT_DC\",\n\t sum(\"4Y6FC12CP0_CREDIT_LC\") AS \"0CREDIT_LC\",\n\t sum(\"0DEBIT_DC\") AS \"0DEBIT_DC\",\n\t sum(\"4Y6FC12CP0_DEBIT_LC\") AS \"0DEBIT_LC\",\n\t sum(\"0DEB_CRE_LC\") AS \"0DEB_CRE_LC\",\n\t sum(\"0DSC_AMT_LC\") AS \"0DSC_AMT_LC\",\n\t sum(\"4Y6FC12CP0_CDPM_ORIA\") AS \"4Y6FC12CP0_CDPM_ORIA\",\n\t sum(\"4Y6FC12CP0_CREDIT_DC_AM\") AS \"4Y6FC12CP0_CREDIT_DC_AM\",\n\t sum(\"4Y6FC12CP0_CREDIT_LC_AM\") AS \"4Y6FC12CP0_CREDIT_LC_AM\",\n\t sum(\"4Y6FC12CP0_DEBIT_DC_AMO\") AS \"4Y6FC12CP0_DEBIT_DC_AMO\",\n\t sum(\"4Y6FC12CP0_DEBIT_LC_AMO\") AS \"4Y6FC12CP0_DEBIT_LC_AMO\",\n\t sum(\"4Y6FC12CP0_DEB_CRE_LC_A\") AS \"4Y6FC12CP0_DEB_CRE_LC_A\",\n\t sum(\"4Y6FC12CP0_DSC_AMT_LC_A\") AS \"4Y6FC12CP0_DSC_AMT_LC_A\",\n\t sum(\"4Y6FC12CP0_REC_COUNT\") AS \"4Y6FC12CP0_REC_COUNT\",\n\t sum(\"YPPMETKP\") AS \"YPPMETKP\",\n\t max(\"YPPTRGT\") AS \"YPPTRGT\" \nFROM \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC12CP0\"('PLACEHOLDER' = ('$$IP_CALYEAR$$','2019'))\nWHERE \"0CALMONTH\" = '@{pipeline().parameters.p_Calmonth}'\n  AND \"YPPMETRIC\" = '@{pipeline().parameters.p_Yppmetric}'\n  AND \"0COMP_CODE__YGZONE\" = '@{pipeline().parameters.p_Zone}'\n  AND \"0COMP_CODE\" = '@{item().COMPCODE}'\n  AND (\"0POST_KEY\" = '@{item().POSTKEY}' OR \"0POST_KEY\" IS NULL)\nGROUP BY \"0AC_DOC_NO\",\n\t \"0AC_DOC_TYP\",\n\t \"0AC_DOC_TYP___T\",\n\t \"0CALMONTH\",\n\t \"0CALMONTH___T\",\n\t \"0CALYEAR\",\n\t \"0CHRT_ACCTS\",\n\t \"0CHRT_ACCTS___T\",\n\t \"0CLEAR_DATE\",\n\t \"0CLEAR_DATE___T\",\n\t \"0CLIENT\",\n\t \"0COMP_CODE\",\n\t \"0COMP_CODE___T\",\n\t \"0COMP_CODE__0COUNTRY\",\n\t \"0COMP_CODE__0COUNTRY___T\",\n\t \"0COMP_CODE__YGMARKET\",\n\t \"0COMP_CODE__YGMARKET___T\",\n\t \"0COMP_CODE__YGZONE\",\n\t \"0COMP_CODE__YGZONE___T\",\n\t \"0CSM_USER\",\n\t \"0CSM_USER___T\",\n\t \"0CURRENCY\",\n\t \"0CURRENCY___T\",\n\t \"4Y6FC12CP0_DATEFROM\",\n\t \"4Y6FC12CP0_DATEFROM___T\",\n\t \"0DATETO\",\n\t \"0DATETO___T\",\n\t \"0DEBITOR\",\n\t \"0DEBITOR___T\",\n\t \"0DISTR_CHAN\",\n\t \"0DISTR_CHAN___T\",\n\t \"0DOC_CURRCY\",\n\t \"0DOC_CURRCY___T\",\n\t \"4Y6FC12CP0_0DOC_DATE\",\n\t \"4Y6FC12CP0_0DOC_DATE___T\",\n\t \"0FISCPER\",\n\t \"0FISCVARNT\",\n\t \"4Y6FC12CP0_FI_AWTYP\",\n\t \"4Y6FC12CP0_FI_AWTYP___T\",\n\t \"0FI_DBCRIND\",\n\t \"0FI_DSBITEM\",\n\t \"0GL_ACCOUNT\",\n\t \"0GL_ACCOUNT___T\",\n\t \"0INFOPROV\",\n\t \"0INV_DOC_NO\",\n\t \"0ITEM_NUM\",\n\t \"0LOC_CURRCY\",\n\t \"0LOC_CURRCY___T\",\n\t \"0LOGSYS\",\n\t \"4Y6FC12CP0_0NETDUEDATE\",\n\t \"4Y6FC12CP0_0NETDUEDATE___T\",\n\t \"0POST_KEY\",\n\t \"0PSTNG_DATE\",\n\t \"0PSTNG_DATE___T\",\n\t \"0SALESORG\",\n\t \"0SALESORG___T\",\n\t \"0USERNAME\",\n\t \"4Y6FC12CP0_BIC_YNEWVALU\",\n\t \"4Y6FC12CP0_BIC_YOBJECTI\",\n\t \"4Y6FC12CP0_CREATEDON\",\n\t \"4Y6FC12CP0_CREATEDON___T\",\n\t \"4Y6FC12CP0_CREATIONGDAT\",\n\t \"4Y6FC12CP0_DATETIMEF04\",\n\t \"4Y6FC12CP0_DATETIMEL04\",\n\t \"4Y6FC12CP0_HISTCOORD\",\n\t \"4Y6FC12CP0_HISTPROCE\",\n\t \"4Y6FC12CP0_RECEIVINGDAT\",\n\t \"4Y6FC12CP0_SLVALIDFROM\",\n\t \"4Y6FC12CP0_SLVALIDFROM___T\",\n\t \"4Y6FC12CP0_SLVALIDTO\",\n\t \"4Y6FC12CP0_SLVALIDTO___T\",\n\t \"4Y6FC12CP0_STATUSRDATE\",\n\t \"4Y6FC12CP0_STATUSTDATE\",\n\t \"4Y6FC12CP0_UDATE1\",\n\t \"4Y6FC12CP0_UDATE1___T\",\n\t \"4Y6FC12CP0_VALUE_NEW1\",\n\t \"4Y6FC12CP0_YBDAYSRE\",\n\t \"4Y6FC12CP0_YDCAGE\",\n\t \"4Y6FC12CP0_YDOC_NUMBER\",\n\t \"4Y6FC12CP0_YFIBEGDA1\",\n\t \"4Y6FC12CP0_YFIBEGDA1___T\",\n\t \"4Y6FC12CP0_YFIBEGDA2\",\n\t \"4Y6FC12CP0_YFIBEGDA2___T\",\n\t \"4Y6FC12CP0_YFIBEGDA3\",\n\t \"4Y6FC12CP0_YFIBEGDA3___T\",\n\t \"4Y6FC12CP0_YFIBEGDA4\",\n\t \"4Y6FC12CP0_YFIBEGDA4___T\",\n\t \"4Y6FC12CP0_YFIWKDS1\",\n\t \"4Y6FC12CP0_YGTNINVO\",\n\t \"4Y6FC12CP0_YGTPGTXT\",\n\t \"4Y6FC12CP0_YGTPSTAT\",\n\t \"4Y6FC12CP0_YGTPSTD\",\n\t \"4Y6FC12CP0_YGTPSTD___T\",\n\t \"4Y6FC12CP0_YGTPTNUM\",\n\t \"4Y6FC12CP0_Y_CL_PER\",\n\t \"CCSM_CLDA\",\n\t \"CCSM_CLDA___T\",\n\t \"CCSM_CRDA\",\n\t \"CCSM_CRDA___T\",\n\t \"CCSM_PROC\",\n\t \"CCSM_RCOD\",\n\t \"CCSM_RCOD___T\",\n\t \"CCSM_SPRO\",\n\t \"CCSM_SPRO___T\",\n\t \"CCSM_STAT\",\n\t \"CCSM_STAT___T\",\n\t \"CCSM_TYPE\",\n\t \"CCSM_TYPE___T\",\n\t \"CDPM_COOR\",\n\t \"CDPM_DCAS\",\n\t \"CDPM_DCAS___T\",\n\t \"CDPM_DCAS__0G_CWWSCR\",\n\t \"CDPM_DCAS__0G_CWWSCR___T\",\n\t \"CDPM_PROS\",\n\t \"CDPM_STAT\",\n\t \"CDPM_STAT___T\",\n\t \"YBDAYS\",\n\t \"YBDAYSCO\",\n\t \"4Y6FC12CP0_YBDAYSPR\",\n\t \"YDMAUTSTA\",\n\t \"YDMAUTSTA___T\",\n\t \"YDMDATFRM\",\n\t \"YDMDATFRM___T\",\n\t \"YDMDATTO\",\n\t \"YDMDATTO___T\",\n\t \"4Y6FC12CP0_YDM_PROSN\",\n\t \"4Y6FC12CP0_YFCCLAIM\",\n\t \"4Y6FC12CP0_YFCCLAIM___T\",\n\t \"YFIWKDS\",\n\t \"YGTKTAAR\",\n\t \"YGTKTAAR___T\",\n\t \"YGTKTAST\",\n\t \"YGTKTAST___T\",\n\t \"YGTPPCDT\",\n\t \"YGTPPCDT___T\",\n\t \"YGT_AWKEY\",\n\t \"YINFOPROV\",\n\t \"YPPMETRIC\",\n\t \"YPPMETRIC___T\",\n\t \"YPPPROV\",\n\t \"YPPPROV___T\",\n\t \"YPPSSC\",\n\t \"YPPSSC___T\",\n\t \"YPPSTAGE\",\n\t \"YPPSTAGE___T\",\n\t \"YVEMAIL\",\n\t \"Y_EXTRDAT\",\n\t \"Y_EXTRDAT___T\"",
+										"type": "Expression"
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink"
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_PROD_HANA_Y6FC12CP0",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_PROD_SQLSERVER_PPULSE_Y6FC12CPO",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "TRUNCATE Y6FC12CP0",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"query": {
+							"value": "SELECT DISTINCT\n\t \"0COMP_CODE\" AS COMPCODE\n       , \"0POST_KEY\" AS POSTKEY\nFROM \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC12CP0\"('PLACEHOLDER' = ('$$IP_CALYEAR$$','2019'))\nWHERE \"0CALMONTH\" = '@{pipeline().parameters.p_Calmonth}'\n  AND \"YPPMETRIC\" = '@{pipeline().parameters.p_Yppmetric}'\n  AND \"0COMP_CODE__YGZONE\" = '@{pipeline().parameters.p_Zone}'",
+							"type": "Expression"
+						},
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_PROD_HANA_Y6FC12CP0",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "SqlServerStoredProcedure3",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SqlServerStoredProcedure4",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[CompositeToMetricTable]",
+					"storedProcedureParameters": {
+						"p_vMetric": {
+							"value": {
+								"value": "@{pipeline().parameters.p_Yppmetric}",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"p_vPeriod": {
+							"value": {
+								"value": "@{pipeline().parameters.p_Calmonth}",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"p_vSchema": {
+							"value": "pps",
+							"type": "String"
+						},
+						"p_vTable": {
+							"value": "Y6FC12CP0",
+							"type": "String"
+						},
+						"p_vZone": {
+							"value": {
+								"value": "@{pipeline().parameters.p_Zone}",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SqlServerStoredProcedure4",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_COPYBW]",
+					"storedProcedureParameters": {
+						"p_vCalmonth": {
+							"value": {
+								"value": "@{pipeline().parameters.p_Calmonth}",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"p_vYgzone": {
+							"value": {
+								"value": "@{pipeline().parameters.p_Zone}",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"p_vYppmetric": {
+							"value": {
+								"value": "@{pipeline().parameters.p_Yppmetric}",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SqlServerStoredProcedure5",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SqlServerStoredProcedure3",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_SP]",
+					"storedProcedureParameters": {
+						"p_vCalmonth": {
+							"value": {
+								"value": "@{pipeline().parameters.p_Calmonth}",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"p_vYgzone": {
+							"value": {
+								"value": "@{pipeline().parameters.p_Zone}",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"p_vYppmetric": {
+							"value": {
+								"value": "@{pipeline().parameters.p_Yppmetric}",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "TRUNCATE Y6FC12CP0",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[TruncateAnyTable]",
+					"storedProcedureParameters": {
+						"vSchema": {
+							"value": "pps",
+							"type": "String"
+						},
+						"vTable": {
+							"value": "Y6FC12CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"p_Calmonth": {
+				"type": "string"
+			},
+			"p_Yppmetric": {
+				"type": "string"
+			},
+			"p_Zone": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Performance Pulse/AdHoc Period Fixed New Server"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

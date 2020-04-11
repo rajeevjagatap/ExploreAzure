@@ -1,0 +1,215 @@
+{
+	"name": "PL_HANA_ADLS_Y6FC12CP0_SPLIT_AR17_AR18",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "REMOVE COLUMN STORE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"query": {
+							"value": "SELECT \n    \"0CALMONTH\" AS CALMONTH\n   ,\"YPPMETRIC\" AS YPPMETRIC\n   ,\"0COMP_CODE__YGZONE\" AS COMP_CODE__YGZONE\nFROM \n   \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC12CP0\"('PLACEHOLDER' = ('$$IP_CALYEAR$$','2019'))\nWHERE \n   \"0CALMONTH\" BETWEEN \n '@{concat(pipeline().parameters.pYearStart,pipeline().parameters.pMonthStart)}' AND '@{concat(pipeline().parameters.pYearEnd,pipeline().parameters.pMonthEnd)}'\nAND \"YPPMETRIC\" IN ('AR17','AR18')\nGROUP BY \n\t\"0CALMONTH\"\n   ,\"YPPMETRIC\"\n   ,\"0COMP_CODE__YGZONE\"",
+							"type": "Expression"
+						},
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_PROD_HANA_Y6FC12CP0",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "UPDATE COMPOSITE 12 - SPLIT",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"p_Calmonth": {
+										"value": "@{item().CALMONTH}",
+										"type": "Expression"
+									},
+									"p_Yppmetric": {
+										"value": "@{item().YPPMETRIC}",
+										"type": "Expression"
+									},
+									"p_Zone": {
+										"value": "@{item().COMP_CODE__YGZONE}",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "TRUNCATE TABLE Y6FC12CP0",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[TruncateAnyTable]",
+					"storedProcedureParameters": {
+						"vSchema": {
+							"value": "pps",
+							"type": "String"
+						},
+						"vTable": {
+							"value": "Y6FC12CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "REMOVE COLUMN STORE",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "TRUNCATE TABLE Y6FC12CP0",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[RemoveColumnstoreIndex]",
+					"storedProcedureParameters": {
+						"p_vOption": {
+							"value": "Y6FC12CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "AddColumnstoreIndex",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[AddColumnstoreIndex]",
+					"storedProcedureParameters": {
+						"p_vOption": {
+							"value": "Y6FC12CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"pYearStart": {
+				"type": "string",
+				"defaultValue": "2019"
+			},
+			"pMonthStart": {
+				"type": "string",
+				"defaultValue": "01"
+			},
+			"pYearEnd": {
+				"type": "string",
+				"defaultValue": "2019"
+			},
+			"pMonthEnd": {
+				"type": "string",
+				"defaultValue": "01"
+			}
+		},
+		"variables": {
+			"CALMONTH": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Performance Pulse/AdHoc Period Fixed New Server"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

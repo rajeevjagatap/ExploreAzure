@@ -1,0 +1,18 @@
+{
+	"name": "LS_PROD_DATALAKE_PerformancePulse",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDataLakeStore",
+		"typeProperties": {
+			"dataLakeStoreUri": "https://ngbsasldatalakeperfpulse.azuredatalakestore.net/webhdfs/v1",
+			"tenant": "12a3af23-a769-4654-847f-958f3d479f4a",
+			"subscriptionId": "a6c9f13d-be73-4227-b485-c7a16289be08",
+			"resourceGroupName": "ngbsppperfpulsemgd-pp-glb-usw2-rg-001"
+		},
+		"connectVia": {
+			"referenceName": "ngbs-datalake-IR-Shared",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

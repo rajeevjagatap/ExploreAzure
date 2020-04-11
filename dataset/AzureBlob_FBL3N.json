@@ -1,0 +1,164 @@
+{
+	"name": "AzureBlob_FBL3N",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SAP_BLOB_S2P",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "S2P"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "G/L",
+				"type": "String"
+			},
+			{
+				"name": "Offst.acct",
+				"type": "String"
+			},
+			{
+				"name": "Plnt",
+				"type": "String"
+			},
+			{
+				"name": "Reference",
+				"type": "String"
+			},
+			{
+				"name": "Purch.Doc.",
+				"type": "String"
+			},
+			{
+				"name": " Item",
+				"type": "String"
+			},
+			{
+				"name": "CoCd",
+				"type": "String"
+			},
+			{
+				"name": "DocumentNo",
+				"type": "String"
+			},
+			{
+				"name": "Transaction Code",
+				"type": "String"
+			},
+			{
+				"name": "Material",
+				"type": "String"
+			},
+			{
+				"name": "Assignment",
+				"type": "String"
+			},
+			{
+				"name": "User name",
+				"type": "String"
+			},
+			{
+				"name": "Profit Ctr",
+				"type": "String"
+			},
+			{
+				"name": "Text",
+				"type": "String"
+			},
+			{
+				"name": "Document Header Text",
+				"type": "String"
+			},
+			{
+				"name": "Clrng doc.",
+				"type": "String"
+			},
+			{
+				"name": "         Quantity",
+				"type": "String"
+			},
+			{
+				"name": "Amount in local cur.",
+				"type": "String"
+			},
+			{
+				"name": "LCurr",
+				"type": "String"
+			},
+			{
+				"name": "Amount in doc. curr.",
+				"type": "String"
+			},
+			{
+				"name": "Curr.",
+				"type": "String"
+			},
+			{
+				"name": "Pstng Date",
+				"type": "String"
+			},
+			{
+				"name": "Entry Date",
+				"type": "String"
+			},
+			{
+				"name": "Doc. Date",
+				"type": "String"
+			},
+			{
+				"name": "Cost Ctr",
+				"type": "String"
+			},
+			{
+				"name": "Reference Key",
+				"type": "String"
+			},
+			{
+				"name": "BUn",
+				"type": "String"
+			},
+			{
+				"name": " Eff.ex.rate",
+				"type": "String"
+			},
+			{
+				"name": "WBS element",
+				"type": "String"
+			},
+			{
+				"name": "Type",
+				"type": "String"
+			},
+			{
+				"name": "Order",
+				"type": "String"
+			},
+			{
+				"name": "Vendor",
+				"type": "String"
+			},
+			{
+				"name": "File Name",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "\t",
+				"rowDelimiter": "",
+				"quoteChar": "\"",
+				"nullValue": "\\N",
+				"encodingName": null,
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": "",
+			"folderPath": "fbl3n"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

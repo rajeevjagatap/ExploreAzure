@@ -1,0 +1,66 @@
+{
+	"name": "DS_PROD_SQLSERVER_PPULSE_AGLAYER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE_SQLDB_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "0CALMONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSSC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSTAGE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YDEN01",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "YNUM01",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "YPPTRGT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "1ROWCOUNT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "pps",
+			"table": "Aggregated Layer"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

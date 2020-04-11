@@ -1,0 +1,143 @@
+{
+	"name": "DAILY",
+	"properties": {
+		"activities": [
+			{
+				"name": "Database scale - S6",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[ScaleDatabase]",
+					"storedProcedureParameters": {
+						"p_vTierName": {
+							"value": "S6",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "120s",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "Database scale - S6",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 120
+				}
+			},
+			{
+				"name": "AUTOMATIC SCHEDULE 10 AND 18",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "PL_HANA_ADLS_PPULSE_Y6FC17CP0_AdHoc",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "AUTOMATIC SCHEDULE 18",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "PL_HANA_ADLS_PPULSE_Y6FC17CP0_AdHoc",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "120s",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_HANA_ADLS_PPULSE_Y6FC17CP0_AdHoc  NEW SERVER",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "30s",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "AUTOMATIC SCHEDULE 10 AND 18",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 30
+				}
+			},
+			{
+				"name": "Database scale - S4",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "30s",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[ScaleDatabase]",
+					"storedProcedureParameters": {
+						"p_vTierName": {
+							"value": "S4",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Performance Pulse/AdHoc Period Fixed New Server"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,13 @@
+{
+	"name": "Office3651",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Office365",
+		"typeProperties": {
+			"office365TenantId": "12a3af23-a769-4654-847f-958f3d479f4a",
+			"servicePrincipalTenantId": "12a3af23-a769-4654-847f-958f3d479f4a",
+			"servicePrincipalId": "10033FFFAE3DC04C"
+		}
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"name": "LS_ExchangeRate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SAP_BLOB_S2P",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

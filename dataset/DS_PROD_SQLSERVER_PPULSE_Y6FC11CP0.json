@@ -1,0 +1,646 @@
+{
+	"name": "DS_PROD_SQLSERVER_PPULSE_Y6FC11CP0",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE_SQLDB_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "0ACCT_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0ACCT_TYPE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0AC_DOC_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0AC_DOC_TYP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0AC_DOC_TYP___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CALMONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CALMONTH___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CALYEAR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CHRT_ACCTS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CHRT_ACCTS___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CLEAR_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CLEAR_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CLR_DOC_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COSTCENTER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COSTCENTER___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COSTCENTER__0PROFIT_CTR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COSTCENTER__0PROFIT_CTR___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CO_AREA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CO_AREA___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CURRENCY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CURRENCY___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0DOC_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0DOC_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0GL_ACCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0GL_ACCOUNT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0INFOPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0INV_CURR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0INV_CURR___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0INV_DOC_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0INV_ITEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0LOGSYS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0NETDUEDATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0NETDUEDATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0OI_EBELN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0PLANT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0PLANT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0PMNTTRMS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0PMNTTRMS___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0POST_KEY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0PSTNG_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0PSTNG_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0PUR_GROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0PUR_GROUP___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0RC_ACCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0RC_ACCOUNT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0REF_DOC_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0VENDOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0VENDOR___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0WBS_ELEMT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0WBS_ELEMT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC11CP0_AGGR_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YCLDOCTY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YDBCRIND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YDBCRIND___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YENTRYCL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YENTRYCL___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YFPNBS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YFPPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YFPPROV___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YIH_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINFOPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINVPKRSN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINVPKRSN___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_BPST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_BPST___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_CAT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_CAT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_D_DT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_D_DT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_LFNR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_LFNR___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_STAT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_STAT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_USNM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINV_USNM___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YIR_P_D_F",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YIR_P_D_F___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YIV_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YIV_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YIV_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPMNT_VDR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPMNT_VDR___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPO_CR_BY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPO_CR_DT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPO_CR_DT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPO_LIFNR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPO_LIFNR___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPACTOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPBLKDT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPBLKDT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPBLKRE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPBUSSID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPCOMPL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPCOMPL___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPEINV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPEXECBY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPFISTDT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPFISTDT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPCUSTF",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPCUSTF___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPE2E",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPE2E___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPLINE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPLINE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPMETYP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPMETYP___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPTOWER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC__YPPTOWER___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMIROWO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPARKDT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPARKDT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPROV___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPRWIT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPRECDT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPRECDT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPRESPDT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPRESPDT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSCIVID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSSC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSSC___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSTAGE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSTAGE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSUBMDT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSUBMDT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSUPWI",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPTGDBUS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPTGDCAL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPUNBLK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPWFL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPWFLIT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPRNR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPR_CR_BY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YRECVDATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YRECVDATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YREPDATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YREPDATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YTCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0AMOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC11CP0_REC_COUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC11CP0_TARGET_DAYS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC11CP0_YINV_RMWR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC11CP0_YRSE_WRBT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YIV_APST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YIV_BLKD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETKP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPTRGT",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "pps",
+			"table": "Y6FC11CP0"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

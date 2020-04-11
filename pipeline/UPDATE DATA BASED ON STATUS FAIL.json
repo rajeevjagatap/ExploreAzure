@@ -1,0 +1,130 @@
+{
+	"name": "UPDATE DATA BASED ON STATUS FAIL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "SqlServerStoredProcedure1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT \n\t[CALMONTH] AS CALMONTH\n   ,[YPPMETRIC] AS YPPMETRIC\n   ,[COMP_CODE__YGZONE] AS COMP_CODE__YGZONE\nFROM\n\t[pps].[UPDATELOG]\nWHERE\n\t[COMPOSITE_PROVIDER] = 'Y6FC12CP0'\n\tAND ([STATUS_COPY_DATA] = 0\n\tOR [STATUS_SP_CONVERT_TO_METRIC] = 0)",
+							"type": "Expression"
+						}
+					},
+					"dataset": {
+						"referenceName": "DS_PROD_SQLSERVER_PPULSE_Y6FC12CPO",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "UPDATE COMPOSITE 12 - SPLIT",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"p_Calmonth": {
+										"value": "@{item().CALMONTH}",
+										"type": "Expression"
+									},
+									"p_Yppmetric": {
+										"value": "@{item().YPPMETRIC}",
+										"type": "Expression"
+									},
+									"p_Zone": {
+										"value": "@{item().COMP_CODE__YGZONE}",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "SqlServerStoredProcedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[TruncateAnyTable]",
+					"storedProcedureParameters": {
+						"vSchema": {
+							"value": "pps",
+							"type": "String"
+						},
+						"vTable": {
+							"value": "Y6FC12CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"CALMONTH": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Performance Pulse/AdHoc Period Fixed New Server"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

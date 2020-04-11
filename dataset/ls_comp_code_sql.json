@@ -1,0 +1,58 @@
+{
+	"name": "ls_comp_code_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE_SQLDB_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COMPANYCODE",
+				"type": "varchar"
+			},
+			{
+				"name": "COMPANYNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTRYCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTRYNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MARKETCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MARKETNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ZONECODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ZONENAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VIRTUALCOUNTRYCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VIRTUALCOUNTRYNAME",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "pps",
+			"table": "Az Company Code"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

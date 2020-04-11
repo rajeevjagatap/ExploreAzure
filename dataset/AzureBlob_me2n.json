@@ -1,0 +1,122 @@
+{
+	"name": "AzureBlob_me2n",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SAP_BLOB_S2P",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "S2P"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "POrg",
+				"type": "String"
+			},
+			{
+				"name": "Purch.Doc.",
+				"type": "String"
+			},
+			{
+				"name": "Item",
+				"type": "String"
+			},
+			{
+				"name": "Cat",
+				"type": "String"
+			},
+			{
+				"name": "Created by",
+				"type": "String"
+			},
+			{
+				"name": "Vendor/supplying plant",
+				"type": "String"
+			},
+			{
+				"name": "Ship To Name",
+				"type": "String"
+			},
+			{
+				"name": "Plnt",
+				"type": "String"
+			},
+			{
+				"name": "PGr",
+				"type": "String"
+			},
+			{
+				"name": "BillOfLad.",
+				"type": "String"
+			},
+			{
+				"name": "Matl Group",
+				"type": "String"
+			},
+			{
+				"name": "Material",
+				"type": "String"
+			},
+			{
+				"name": "Short Text",
+				"type": "String"
+			},
+			{
+				"name": "Material Description",
+				"type": "String"
+			},
+			{
+				"name": "A",
+				"type": "String"
+			},
+			{
+				"name": "D",
+				"type": "String"
+			},
+			{
+				"name": "TrackingNo",
+				"type": "String"
+			},
+			{
+				"name": "Grp",
+				"type": "String"
+			},
+			{
+				"name": "Strat",
+				"type": "String"
+			},
+			{
+				"name": "Our Ref.",
+				"type": "String"
+			},
+			{
+				"name": "      Quantity",
+				"type": "String"
+			},
+			{
+				"name": "     Net Value",
+				"type": "String"
+			},
+			{
+				"name": "File Name\r",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "\t",
+				"rowDelimiter": "\n",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": "",
+			"folderPath": "me2n"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

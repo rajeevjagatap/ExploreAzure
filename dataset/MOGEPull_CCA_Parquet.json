@@ -1,0 +1,25 @@
+{
+	"name": "MOGEPull_CCA_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MOGEDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MOGE Pull"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "test",
+				"folderPath": "CCA",
+				"fileSystem": "moge-pull-report"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

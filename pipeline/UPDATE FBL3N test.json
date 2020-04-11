@@ -1,0 +1,361 @@
+{
+	"name": "UPDATE FBL3N test",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_GRIR_FBL3N_copy1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "me2n/"
+					},
+					{
+						"name": "Destination",
+						"value": "[gri].[ME2N]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE gri.FBL3N",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "LS_PROD_SAP_BLOB_S2P",
+							"type": "LinkedServiceReference"
+						},
+						"path": "azure-webjobs-hosts"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "G/L"
+								},
+								"sink": {
+									"name": "G/L",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Offst.acct"
+								},
+								"sink": {
+									"name": "Offst.acct",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Plnt"
+								},
+								"sink": {
+									"name": "Plnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Reference"
+								},
+								"sink": {
+									"name": "Reference",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Purch.Doc."
+								},
+								"sink": {
+									"name": "Purch.Doc.",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Item",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Item",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CoCd"
+								},
+								"sink": {
+									"name": "CoCd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DocumentNo"
+								},
+								"sink": {
+									"name": "DocumentNo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Transaction Code"
+								},
+								"sink": {
+									"name": "Transaction Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Material"
+								},
+								"sink": {
+									"name": "Material",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Assignment"
+								},
+								"sink": {
+									"name": "Assignment",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "User name"
+								},
+								"sink": {
+									"name": "User name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Profit Ctr"
+								},
+								"sink": {
+									"name": "Profit Ctr",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Text"
+								},
+								"sink": {
+									"name": "Text",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Document Header Text"
+								},
+								"sink": {
+									"name": "Document Header Text",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Clrng doc."
+								},
+								"sink": {
+									"name": "Clrng doc.",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "         Quantity"
+								},
+								"sink": {
+									"name": "Quantity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Amount in local cur."
+								},
+								"sink": {
+									"name": "Amount in local cur.",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LCurr"
+								},
+								"sink": {
+									"name": "LCurr",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Amount in doc. curr."
+								},
+								"sink": {
+									"name": "Amount in doc. curr.",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Curr."
+								},
+								"sink": {
+									"name": "Curr.",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Pstng Date"
+								},
+								"sink": {
+									"name": "Pstng Date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Entry Date"
+								},
+								"sink": {
+									"name": "Entry Date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Doc. Date"
+								},
+								"sink": {
+									"name": "Doc. Date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Cost Ctr"
+								},
+								"sink": {
+									"name": "Cost Ctr",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Reference Key"
+								},
+								"sink": {
+									"name": "Reference Key",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUn"
+								},
+								"sink": {
+									"name": "BUn",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Eff.ex.rate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Eff.ex.rate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WBS element"
+								},
+								"sink": {
+									"name": "WBS element",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Type"
+								},
+								"sink": {
+									"name": "Type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Order"
+								},
+								"sink": {
+									"name": "Order",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Vendor"
+								},
+								"sink": {
+									"name": "Vendor",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureBlob_FBL3N",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_FBL3N",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "S2P"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

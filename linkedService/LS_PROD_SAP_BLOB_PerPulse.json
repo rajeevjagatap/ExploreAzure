@@ -1,0 +1,12 @@
+{
+	"name": "LS_PROD_SAP_BLOB_PerPulse",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=ngbsaslstorageaccountpp;EndpointSuffix=core.windows.net;",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIk5HQlMtREFUQUxBS0UtQURGXzk5YzNiMWQ4LTQyMTMtNDNlZC1hZWI4LTNmMjM2ZTMwYzZlZiINCn0="
+		}
+	}
+}

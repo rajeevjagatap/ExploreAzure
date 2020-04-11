@@ -1,0 +1,648 @@
+{
+	"name": "DS_PROD_SQLSERVER_Y6FC11CP0",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SQLSERVER_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Performance Pulse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "0ACCT_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "0ACCT_TYPE___T",
+				"type": "String"
+			},
+			{
+				"name": "0AC_DOC_NO",
+				"type": "String"
+			},
+			{
+				"name": "0AC_DOC_TYP",
+				"type": "String"
+			},
+			{
+				"name": "0AC_DOC_TYP___T",
+				"type": "String"
+			},
+			{
+				"name": "0CALMONTH",
+				"type": "String"
+			},
+			{
+				"name": "0CALMONTH___T",
+				"type": "String"
+			},
+			{
+				"name": "0CALYEAR",
+				"type": "String"
+			},
+			{
+				"name": "0CHRT_ACCTS",
+				"type": "String"
+			},
+			{
+				"name": "0CHRT_ACCTS___T",
+				"type": "String"
+			},
+			{
+				"name": "0CLEAR_DATE",
+				"type": "String"
+			},
+			{
+				"name": "0CLEAR_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "0CLR_DOC_NO",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE___T",
+				"type": "String"
+			},
+			{
+				"name": "0COSTCENTER",
+				"type": "String"
+			},
+			{
+				"name": "0COSTCENTER___T",
+				"type": "String"
+			},
+			{
+				"name": "0COSTCENTER__0PROFIT_CTR",
+				"type": "String"
+			},
+			{
+				"name": "0COSTCENTER__0PROFIT_CTR___T",
+				"type": "String"
+			},
+			{
+				"name": "0CO_AREA",
+				"type": "String"
+			},
+			{
+				"name": "0CO_AREA___T",
+				"type": "String"
+			},
+			{
+				"name": "0CURRENCY",
+				"type": "String"
+			},
+			{
+				"name": "0CURRENCY___T",
+				"type": "String"
+			},
+			{
+				"name": "0DOC_DATE",
+				"type": "String"
+			},
+			{
+				"name": "0DOC_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "0GL_ACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "0GL_ACCOUNT___T",
+				"type": "String"
+			},
+			{
+				"name": "0INFOPROV",
+				"type": "String"
+			},
+			{
+				"name": "0INV_CURR",
+				"type": "String"
+			},
+			{
+				"name": "0INV_CURR___T",
+				"type": "String"
+			},
+			{
+				"name": "0INV_DOC_NO",
+				"type": "String"
+			},
+			{
+				"name": "0INV_ITEM",
+				"type": "String"
+			},
+			{
+				"name": "0LOGSYS",
+				"type": "String"
+			},
+			{
+				"name": "0NETDUEDATE",
+				"type": "String"
+			},
+			{
+				"name": "0NETDUEDATE___T",
+				"type": "String"
+			},
+			{
+				"name": "0OI_EBELN",
+				"type": "String"
+			},
+			{
+				"name": "0PLANT",
+				"type": "String"
+			},
+			{
+				"name": "0PLANT___T",
+				"type": "String"
+			},
+			{
+				"name": "0PMNTTRMS",
+				"type": "String"
+			},
+			{
+				"name": "0PMNTTRMS___T",
+				"type": "String"
+			},
+			{
+				"name": "0POST_KEY",
+				"type": "String"
+			},
+			{
+				"name": "0PSTNG_DATE",
+				"type": "String"
+			},
+			{
+				"name": "0PSTNG_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "0PUR_GROUP",
+				"type": "String"
+			},
+			{
+				"name": "0PUR_GROUP___T",
+				"type": "String"
+			},
+			{
+				"name": "0RC_ACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "0RC_ACCOUNT___T",
+				"type": "String"
+			},
+			{
+				"name": "0REF_DOC_NO",
+				"type": "String"
+			},
+			{
+				"name": "0VENDOR",
+				"type": "String"
+			},
+			{
+				"name": "0VENDOR___T",
+				"type": "String"
+			},
+			{
+				"name": "0WBS_ELEMT",
+				"type": "String"
+			},
+			{
+				"name": "0WBS_ELEMT___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC11CP0_AGGR_DATE",
+				"type": "String"
+			},
+			{
+				"name": "YCLDOCTY",
+				"type": "String"
+			},
+			{
+				"name": "YDBCRIND",
+				"type": "String"
+			},
+			{
+				"name": "YDBCRIND___T",
+				"type": "String"
+			},
+			{
+				"name": "YENTRYCL",
+				"type": "String"
+			},
+			{
+				"name": "YENTRYCL___T",
+				"type": "String"
+			},
+			{
+				"name": "YFPNBS",
+				"type": "String"
+			},
+			{
+				"name": "YFPPROV",
+				"type": "String"
+			},
+			{
+				"name": "YFPPROV___T",
+				"type": "String"
+			},
+			{
+				"name": "YIH_TXT",
+				"type": "String"
+			},
+			{
+				"name": "YINFOPROV",
+				"type": "String"
+			},
+			{
+				"name": "YINVPKRSN",
+				"type": "String"
+			},
+			{
+				"name": "YINVPKRSN___T",
+				"type": "String"
+			},
+			{
+				"name": "YINV_BPST",
+				"type": "String"
+			},
+			{
+				"name": "YINV_BPST___T",
+				"type": "String"
+			},
+			{
+				"name": "YINV_CAT",
+				"type": "String"
+			},
+			{
+				"name": "YINV_CAT___T",
+				"type": "String"
+			},
+			{
+				"name": "YINV_D_DT",
+				"type": "String"
+			},
+			{
+				"name": "YINV_D_DT___T",
+				"type": "String"
+			},
+			{
+				"name": "YINV_LFNR",
+				"type": "String"
+			},
+			{
+				"name": "YINV_LFNR___T",
+				"type": "String"
+			},
+			{
+				"name": "YINV_STAT",
+				"type": "String"
+			},
+			{
+				"name": "YINV_STAT___T",
+				"type": "String"
+			},
+			{
+				"name": "YINV_USNM",
+				"type": "String"
+			},
+			{
+				"name": "YINV_USNM___T",
+				"type": "String"
+			},
+			{
+				"name": "YIR_P_D_F",
+				"type": "String"
+			},
+			{
+				"name": "YIR_P_D_F___T",
+				"type": "String"
+			},
+			{
+				"name": "YIV_DATE",
+				"type": "String"
+			},
+			{
+				"name": "YIV_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "YIV_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "YPMNT_VDR",
+				"type": "String"
+			},
+			{
+				"name": "YPMNT_VDR___T",
+				"type": "String"
+			},
+			{
+				"name": "YPO_CR_BY",
+				"type": "String"
+			},
+			{
+				"name": "YPO_CR_DT",
+				"type": "String"
+			},
+			{
+				"name": "YPO_CR_DT___T",
+				"type": "String"
+			},
+			{
+				"name": "YPO_LIFNR",
+				"type": "String"
+			},
+			{
+				"name": "YPO_LIFNR___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPACTOR",
+				"type": "String"
+			},
+			{
+				"name": "YPPBLKDT",
+				"type": "String"
+			},
+			{
+				"name": "YPPBLKDT___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPBLKRE",
+				"type": "String"
+			},
+			{
+				"name": "YPPBUSSID",
+				"type": "String"
+			},
+			{
+				"name": "YPPCOMPL",
+				"type": "String"
+			},
+			{
+				"name": "YPPCOMPL___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPEINV",
+				"type": "String"
+			},
+			{
+				"name": "YPPEXECBY",
+				"type": "String"
+			},
+			{
+				"name": "YPPFISTDT",
+				"type": "String"
+			},
+			{
+				"name": "YPPFISTDT___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPCUSTF",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPCUSTF___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPE2E",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPE2E___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPLINE",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPLINE___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPMETYP",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPMETYP___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPTOWER",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC__YPPTOWER___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPMIROWO",
+				"type": "String"
+			},
+			{
+				"name": "YPPPARKDT",
+				"type": "String"
+			},
+			{
+				"name": "YPPPARKDT___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPPROV",
+				"type": "String"
+			},
+			{
+				"name": "YPPPROV___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPPRWIT",
+				"type": "String"
+			},
+			{
+				"name": "YPPRECDT",
+				"type": "String"
+			},
+			{
+				"name": "YPPRECDT___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPRESPDT",
+				"type": "String"
+			},
+			{
+				"name": "YPPRESPDT___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPSCIVID",
+				"type": "String"
+			},
+			{
+				"name": "YPPSSC",
+				"type": "String"
+			},
+			{
+				"name": "YPPSSC___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPSTAGE",
+				"type": "String"
+			},
+			{
+				"name": "YPPSTAGE___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPSUBMDT",
+				"type": "String"
+			},
+			{
+				"name": "YPPSUBMDT___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPSUPWI",
+				"type": "String"
+			},
+			{
+				"name": "YPPTGDBUS",
+				"type": "String"
+			},
+			{
+				"name": "YPPTGDCAL",
+				"type": "String"
+			},
+			{
+				"name": "YPPUNBLK",
+				"type": "String"
+			},
+			{
+				"name": "YPPWFL",
+				"type": "String"
+			},
+			{
+				"name": "YPPWFLIT",
+				"type": "String"
+			},
+			{
+				"name": "YPRNR",
+				"type": "String"
+			},
+			{
+				"name": "YPR_CR_BY",
+				"type": "String"
+			},
+			{
+				"name": "YRECVDATE",
+				"type": "String"
+			},
+			{
+				"name": "YRECVDATE___T",
+				"type": "String"
+			},
+			{
+				"name": "YREPDATE",
+				"type": "String"
+			},
+			{
+				"name": "YREPDATE___T",
+				"type": "String"
+			},
+			{
+				"name": "YTCODE",
+				"type": "String"
+			},
+			{
+				"name": "0AMOUNT",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC11CP0_REC_COUNT",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC11CP0_TARGET_DAYS",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC11CP0_YINV_RMWR",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC11CP0_YRSE_WRBT",
+				"type": "String"
+			},
+			{
+				"name": "YIV_APST",
+				"type": "String"
+			},
+			{
+				"name": "YIV_BLKD",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETKP",
+				"type": "String"
+			},
+			{
+				"name": "YPPTRGT",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[pps].[Y6FC11CP0]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

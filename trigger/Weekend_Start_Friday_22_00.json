@@ -1,0 +1,35 @@
+{
+	"name": "Weekend_Start_Friday_22_00",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "WEEKEND",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2019-07-23T17:32:00Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						22
+					],
+					"weekDays": [
+						"Friday"
+					]
+				}
+			}
+		}
+	}
+}

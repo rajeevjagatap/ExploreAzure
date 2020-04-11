@@ -1,0 +1,74 @@
+{
+	"name": "DestinationDataset_alp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SQLSERVER_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "S2P"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "Doc_No",
+				"type": "String",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "TCode",
+				"type": "String",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "CoCd",
+				"type": "String",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Inv_Pty",
+				"type": "String",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "St",
+				"type": "String",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Pk",
+				"type": "String",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Pstng_Date",
+				"type": "String",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Crcy",
+				"type": "String",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "Gross_amnt",
+				"type": "String",
+				"precision": 0,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"tableName": "[pkb].[RBKP]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

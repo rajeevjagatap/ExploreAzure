@@ -1,0 +1,58 @@
+{
+	"name": "DS_PROD_SQLSERVER_SHARED_COMPANY_CODE_TARGET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE_SQLDB_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COMPANYCODE",
+				"type": "varchar"
+			},
+			{
+				"name": "COMPANYNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTRYCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTRYNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MARKETCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MARKETNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ZONECODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ZONENAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VIRTUALCOUNTRYCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VIRTUALCOUNTRYNAME",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "pps",
+			"table": "Shared Dim Company Code"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

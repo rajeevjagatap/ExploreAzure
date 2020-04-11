@@ -1,0 +1,213 @@
+{
+	"name": "AUTOMATIC SCHEDULE 10 AND 11 AND 12",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set sYearStart",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "sYearStart",
+					"value": {
+						"value": "@if\n(\n   or( equals(string(formatDateTime(utcnow(),'MM')),'01'),\n         equals(string(formatDateTime(utcnow(),'MM')),'02')),\n    string(sub(int(formatDateTime(utcnow(),'yyyy')) ,1)), \n    formatDateTime(utcnow(),'yyyy')\n)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set sYearEnd",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set sMonthStart",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "sYearEnd",
+					"value": {
+						"value": "@formatDateTime(utcnow(),'yyyy')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set sMonthStart",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set sYearStart",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "sMonthStart",
+					"value": {
+						"value": "@if\n(\n    equals(string(formatDateTime(utcnow(),'MM')),'01'), \n    '11',\n    if(\n        equals(string(formatDateTime(utcnow(),'MM')),'02'), \n        '12',\n        if(\n           or( equals(string(formatDateTime(utcnow(),'MM')),'12'), \n                 equals(string(formatDateTime(utcnow(),'MM')),'11'), \n                 equals(string(formatDateTime(utcnow(),'MM')),'10') ),\n                 string( sub(int(formatDateTime(utcnow(),'MM')),2) ),\n                 concat('0', string( sub(int( formatDateTime(utcnow(),'MM')),2) ))\n        )\n    )\n)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set sMonthEnd",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set sYearEnd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "sMonthEnd",
+					"value": {
+						"value": "@formatDateTime(utcnow(),'MM')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "PL_HANA_ADLS_PPULSE_Y6FC120CP0_SPLIT",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Set sMonthEnd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_HANA_ADLS_PPULSE_Y6FC120CP0_SPLIT",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"pYearStart": {
+							"value": "@variables('sYearStart')",
+							"type": "Expression"
+						},
+						"pMonthStart": {
+							"value": "@variables('sMonthStart')",
+							"type": "Expression"
+						},
+						"pYearEnd": {
+							"value": "@variables('sYearEnd')",
+							"type": "Expression"
+						},
+						"pMonthEnd": {
+							"value": "@variables('sMonthEnd')",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "PL_HANA_ADLS_PPULSE_Y6FC11CP0",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Set sMonthEnd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_HANA_ADLS_PPULSE_Y6FC11CP0_AdHoc NEW SERVER",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"pYearStart": {
+							"value": "@variables('sYearStart')",
+							"type": "Expression"
+						},
+						"pMonthStart": {
+							"value": "@variables('sMonthStart')",
+							"type": "Expression"
+						},
+						"pYearEnd": {
+							"value": "@variables('sYearEnd')",
+							"type": "Expression"
+						},
+						"pMonthEnd": {
+							"value": "@variables('sMonthEnd')",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "PL_HANA_ADLS_PPULSE_Y6FC10CP0",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Set sMonthEnd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_HANA_ADLS_PPULSE_Y6FC10CP0_AdHoc  NEW SERVER",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"pYearStart": {
+							"value": "@variables('sYearStart')",
+							"type": "Expression"
+						},
+						"pMonthStart": {
+							"value": "@variables('sMonthStart')",
+							"type": "Expression"
+						},
+						"pYearEnd": {
+							"value": "@variables('sYearEnd')",
+							"type": "Expression"
+						},
+						"pMonthEnd": {
+							"value": "@variables('sMonthEnd')",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"variables": {
+			"sYearStart": {
+				"type": "String"
+			},
+			"sMonthStart": {
+				"type": "String"
+			},
+			"sYearEnd": {
+				"type": "String"
+			},
+			"sMonthEnd": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Performance Pulse/AdHoc Period Fixed New Server"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

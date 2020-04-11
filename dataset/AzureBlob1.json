@@ -1,0 +1,34 @@
+{
+	"name": "AzureBlob1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SAP_BLOB_PerPulse",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Test"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "201705;MAY 2017;2017;IT15;SanPellegrino S.p.A.;IT;Italy;00010103;Italy & Malta;00000001;EMENA;IT;Italy;Y3WGUBA0;0;00000000000000000000000;;\\N;00010103;Italy & Malta;00000001;EMENA;AP17;Third party PO Creation Compliance;20;DXC;14;NBS IT;1;Live;7;7;90.000;1",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ";",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": "",
+			"folderPath": "ngbsaslperpulse"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

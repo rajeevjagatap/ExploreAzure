@@ -1,0 +1,734 @@
+{
+	"name": "DS_PROD_SQLSERVER_PPULSE_Y6FC10CP0",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE_SQLDB_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "0CALMONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CALMONTH___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CALYEAR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0INFOPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AC_RECONCILE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AC_TO_RECONC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AGGR_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AGGR_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "APP_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "APP_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AUDIT_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AUDIT_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AUDIT_MONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AUDIT_MONTH___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AUDIT_RESULT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BUSINESS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CASE_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CASE_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CASE_URGENCY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CLEAR_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CLEAR_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CLOSED_BY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CMD_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CMD_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMMENTS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTRY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTRY_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATION_DAT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATION_DAT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUST_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATE_AUDITED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATE_AUDITED___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATE_COMPLET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATE_COMPLET___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATE_EXECUTE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATE_EXECUTE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATE_RECEIVE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATE_RECEIVE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEADLINE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEADLINE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEAD_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEAD_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOC_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMPLOYEE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMPLOYEE_NAM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMPTY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERROR_DESC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERROR_DETECT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FIRST_CONT_R",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INV_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INV_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INV_NUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MARKET_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MASS_DAY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NO_ACCOUTNS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ON_TIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ON_TIME_NO_M",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OPENED_DATET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OPENED_DATET___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORIGIN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYROLL_PERI",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERIOD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONAL_ARE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PER_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROCESSOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REASON_BLOCK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REASON_PARKI",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECEIVED_ON",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECONC_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECONC_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECONC_MONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECONC_MONTH___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECON_MONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECON_MONTH___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECORD_NO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REPORT_MONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REPORT_MONTH___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REP_MONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REP_MONTH___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REP_PROVIDED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REQUESTOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REQUEST_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REQUEST_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REQ_ACCURATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REQ_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REQ_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REQ_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RESOLVED_BY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RESOLVED_DAT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RESOLVED_DAT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RESOL_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RESOL_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RESO_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RESO_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RPROC_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RPROC_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RREC_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RREC_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RWRK_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RWRK_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SENT_TO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SLA_EXT_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SLA_EXT_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SOURCE_ERROR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SSC_ERROR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATUS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUBMIT_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUBMIT_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUB_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUB_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TARGET_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TARGET_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TICKET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER1_ACT_DA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER1_ACT_DA___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER1_INT_DA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER1_INT_DA___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER1_WAIT_D",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER1_WORKON",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER1_WORKON___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER2_ACT_DA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER2_ACT_DA___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER2_INT_DA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER2_INT_DA___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER3_ACT_DA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER3_ACT_DA___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER3_INT_DA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIER3_INT_DA___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TR_EXECUTED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TR_TO_EXECUT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TYPE_REQ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TYPE_REQUEST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UNIT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UPDREQ_CORRE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "URGENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "USERNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VENDOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WF_DATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WF_DATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YDATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YDATE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPROV___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YINFOPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPFILEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPFITMST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSSC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSSC___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSTAGE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSTAGE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DENIED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NUM_CHG_REQ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NUM_EMP_DATA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NUM_IMP_EMPS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NUM_INACT_CH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NUM_INACT_OM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NUM_OM_DATA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NUM_OM_DAT_0",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REC_COUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SURVEY_RES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOT_CALLS_AB",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOT_CALLS_AN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOT_CALLS_RE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOT_CALLS_WA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOT_NUM_CALL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETKP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPTRGT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "4Y6FC10CP0_PAYRL_AREA",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "pps",
+			"table": "Y6FC10CP0"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

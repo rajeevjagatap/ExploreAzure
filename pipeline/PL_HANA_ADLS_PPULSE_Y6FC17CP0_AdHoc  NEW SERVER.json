@@ -1,0 +1,398 @@
+{
+	"name": "PL_HANA_ADLS_PPULSE_Y6FC17CP0_AdHoc  NEW SERVER",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Y6FC17CP0",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "INSERT_INTO_LOG",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RelationalSource",
+						"query": {
+							"value": "SELECT\n\t \"0CALMONTH\",\n\t \"0CALMONTH___T\",\n\t \"0CALYEAR\",\n\t \"0COMP_CODE\",\n\t \"0COMP_CODE___T\",\n\t \"0COMP_CODE__0COUNTRY\",\n\t \"0COMP_CODE__0COUNTRY___T\",\n\t \"0COMP_CODE__YGMARKET\",\n\t \"0COMP_CODE__YGMARKET___T\",\n\t \"0COMP_CODE__YGZONE\",\n\t \"0COMP_CODE__YGZONE___T\",\n\t \"0COUNTRY\",\n\t \"0COUNTRY___T\",\n\t \"0INFOPROV\",\n\t \"0RECORDTP\",\n\t \"0REQTSN\",\n\t \"0UNIT\",\n\t \"0UNIT___T\",\n\t \"YGMARKET\",\n\t \"YGMARKET___T\",\n\t \"YGZONE\",\n\t \"YGZONE___T\",\n\t \"YPPMETRIC\",\n\t \"YPPMETRIC___T\",\n\t LTRIM(RTRIM(\"YPPPROV\")) AS \"YPPPROV\",\n\t \"YPPPROV___T\",\n\t LTRIM(RTRIM(\"YPPSSC\")) AS \"YPPSSC\",\n\t \"YPPSSC___T\",\n\t \"YPPSTAGE\",\n\t \"YPPSTAGE___T\",\n\t sum(\"YDEN01\") AS \"YDEN01\",\n\t sum(\"YNUM01\") AS \"YNUM01\",\n\t max(\"YPPTRGT\") AS \"YPPTRGT\"\nFROM \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC17CP0\"('PLACEHOLDER' = ('$$IP_CALYEAR$$','2019'))\nWHERE \n\t(\"YPPSSC\" IS NOT NULL OR LTRIM(RTRIM(\"YPPSSC\")) <> '')\n\tAND (\"YPPPROV\" IS NOT NULL OR LTRIM(RTRIM(\"YPPSSC\")) <> '')\n\tAND \"0CALMONTH\" >= '201901'\nGROUP BY \"0CALMONTH\",\n\t \"0CALMONTH___T\",\n\t \"0CALYEAR\",\n\t \"0COMP_CODE\",\n\t \"0COMP_CODE___T\",\n\t \"0COMP_CODE__0COUNTRY\",\n\t \"0COMP_CODE__0COUNTRY___T\",\n\t \"0COMP_CODE__YGMARKET\",\n\t \"0COMP_CODE__YGMARKET___T\",\n\t \"0COMP_CODE__YGZONE\",\n\t \"0COMP_CODE__YGZONE___T\",\n\t \"0COUNTRY\",\n\t \"0COUNTRY___T\",\n\t \"0INFOPROV\",\n\t \"0RECORDTP\",\n\t \"0REQTSN\",\n\t \"0UNIT\",\n\t \"0UNIT___T\",\n\t \"YGMARKET\",\n\t \"YGMARKET___T\",\n\t \"YGZONE\",\n\t \"YGZONE___T\",\n\t \"YPPMETRIC\",\n\t \"YPPMETRIC___T\",\n\t \"YPPPROV\",\n\t \"YPPPROV___T\",\n\t \"YPPSSC\",\n\t \"YPPSSC___T\",\n\t \"YPPSTAGE\",\n\t \"YPPSTAGE___T\"",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": {
+							"value": "TRUNCATE TABLE [pps].[Y6FC17CP0] ",
+							"type": "Expression"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_PROD_HANA_Y6FC17CP0",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_PPULSE_Y6FC17CP0",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy Aggregated Layer",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "UPDATE_STATUS_COPY",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT [0CALMONTH]\n      ,[0COMP_CODE]\n      ,[YPPMETRIC]\n      ,[YPPPROV]\n      ,[YPPSSC]\n      ,[YPPSTAGE]\n      ,[YDEN01]\n      ,[YNUM01]\n      ,[YPPTRGT]\n      ,[1ROWCOUNT]\n  FROM [pps].[Y6FC17CP0] ",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": {
+							"value": "TRUNCATE TABLE [pps].[Aggregated Layer] ",
+							"type": "Expression"
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_PPULSE_Y6FC17CP0",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_PPULSE_AGLAYER",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Clear Log",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[STATUS_PP_CLEAN]",
+					"storedProcedureParameters": {
+						"p_vComposite": {
+							"value": "Y6FC17CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "INSERT_INTO_LOG",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Clear Log",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[STATUS_PP_SETLOG]",
+					"storedProcedureParameters": {
+						"p_vCalmonth": {
+							"value": "999999",
+							"type": "String"
+						},
+						"p_vComposite": {
+							"value": "Y6FC17CP0",
+							"type": "String"
+						},
+						"p_vYgzone": {
+							"value": "99999999",
+							"type": "String"
+						},
+						"p_vYppmetric": {
+							"value": "ZZZZZ",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "UPDATE_STATUS_COPY",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy Y6FC17CP0",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_COPYBW17]",
+					"storedProcedureParameters": {
+						"p_vComposite": {
+							"value": "Y6FC17CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "UPDATE_STATUS_SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy Aggregated Layer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_SP17]",
+					"storedProcedureParameters": {
+						"p_vComposite": {
+							"value": "Y6FC17CP0",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Progress Status Error",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy Y6FC17CP0",
+						"dependencyConditions": [
+							"Failed"
+						]
+					},
+					{
+						"activity": "Copy Aggregated Layer",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_PROGRESS]",
+					"storedProcedureParameters": {
+						"p_vCalmonth": {
+							"value": "Y6FC17CP0",
+							"type": "String"
+						},
+						"p_vYgzone": {
+							"value": "99999999",
+							"type": "String"
+						},
+						"p_vYppmetric": {
+							"value": "ZZZZZ",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Progress Status",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "UPDATE_STATUS_SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[STATUS_PP_UPDATELOG_PROGRESS]",
+					"storedProcedureParameters": {
+						"p_vCalmonth": {
+							"value": "Y6FC17CP0",
+							"type": "String"
+						},
+						"p_vYgzone": {
+							"value": "99999999",
+							"type": "String"
+						},
+						"p_vYppmetric": {
+							"value": "ZZZZZ",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_AZURE_SQLDB_PPULSE",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Update Calendar",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy Aggregated Layer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT DISTINCT \n     [0CALMONTH] AS [YearMonth]\n    ,[0CALMONTH___T] AS [YearMonthLong]\n    ,[0CALYEAR] AS [Year]\n  FROM [pps].[Y6FC17CP0]\nWHERE [0CALMONTH] NOT IN (SELECT YearMonth FROM pps.[Shared_Dim_Calendar]) AND [0CALYEAR] >= '2019' AND [0CALMONTH] <= (YEAR(GETUTCDATE()) * 100 + MONTH(GETUTCDATE()))",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_PPULSE_Y6FC17CP0",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_PROD_SQLSERVER_DIM_CALENDAR",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"variables": {
+			"vYear": {
+				"type": "String"
+			},
+			"vMonth": {
+				"type": "String"
+			},
+			"Period": {
+				"type": "Array"
+			},
+			"Metric": {
+				"type": "Array"
+			},
+			"ZoneCode": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "Performance Pulse/AdHoc Period Fixed New Server"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

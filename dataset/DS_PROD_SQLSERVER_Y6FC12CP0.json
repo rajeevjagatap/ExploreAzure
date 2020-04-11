@@ -1,0 +1,688 @@
+{
+	"name": "DS_PROD_SQLSERVER_Y6FC12CP0",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SQLSERVER_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Performance Pulse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "0AC_DOC_NO",
+				"type": "String"
+			},
+			{
+				"name": "0AC_DOC_TYP",
+				"type": "String"
+			},
+			{
+				"name": "0AC_DOC_TYP___T",
+				"type": "String"
+			},
+			{
+				"name": "0CALMONTH",
+				"type": "String"
+			},
+			{
+				"name": "0CALMONTH___T",
+				"type": "String"
+			},
+			{
+				"name": "0CALYEAR",
+				"type": "String"
+			},
+			{
+				"name": "0CHRT_ACCTS",
+				"type": "String"
+			},
+			{
+				"name": "0CHRT_ACCTS___T",
+				"type": "String"
+			},
+			{
+				"name": "0CLEAR_DATE",
+				"type": "String"
+			},
+			{
+				"name": "0CLEAR_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE___T",
+				"type": "String"
+			},
+			{
+				"name": "0CSM_USER",
+				"type": "String"
+			},
+			{
+				"name": "0DEBITOR",
+				"type": "String"
+			},
+			{
+				"name": "0DEBITOR___T",
+				"type": "String"
+			},
+			{
+				"name": "0DOC_CURRCY",
+				"type": "String"
+			},
+			{
+				"name": "0DOC_DATE",
+				"type": "String"
+			},
+			{
+				"name": "0DOC_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "0FI_AWTYP",
+				"type": "String"
+			},
+			{
+				"name": "0FI_DBCRIND",
+				"type": "String"
+			},
+			{
+				"name": "0GL_ACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "0GL_ACCOUNT___T",
+				"type": "String"
+			},
+			{
+				"name": "0INFOPROV",
+				"type": "String"
+			},
+			{
+				"name": "0INV_DOC_NO",
+				"type": "String"
+			},
+			{
+				"name": "0ITEM_NUM",
+				"type": "String"
+			},
+			{
+				"name": "0LOC_CURRCY",
+				"type": "String"
+			},
+			{
+				"name": "0LOGSYS",
+				"type": "String"
+			},
+			{
+				"name": "0NETDUEDATE",
+				"type": "String"
+			},
+			{
+				"name": "0NETDUEDATE___T",
+				"type": "String"
+			},
+			{
+				"name": "0POST_KEY",
+				"type": "String"
+			},
+			{
+				"name": "0PSTNG_DATE",
+				"type": "String"
+			},
+			{
+				"name": "0PSTNG_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_CREATEDON",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_CREATEDON___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_SLVALIDFROM",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_SLVALIDFROM___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_SLVALIDTO",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_SLVALIDTO___T",
+				"type": "String"
+			},
+			{
+				"name": "YGTPPCDT",
+				"type": "String"
+			},
+			{
+				"name": "YGTPPCDT___T",
+				"type": "String"
+			},
+			{
+				"name": "YGT_AWKEY",
+				"type": "String"
+			},
+			{
+				"name": "YINFOPROV",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPPROV",
+				"type": "String"
+			},
+			{
+				"name": "YPPPROV___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPSSC",
+				"type": "String"
+			},
+			{
+				"name": "YPPSSC___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPSTAGE",
+				"type": "String"
+			},
+			{
+				"name": "YPPSTAGE___T",
+				"type": "String"
+			},
+			{
+				"name": "0CREDIT_DC",
+				"type": "String"
+			},
+			{
+				"name": "0CREDIT_LC",
+				"type": "String"
+			},
+			{
+				"name": "0DEBIT_DC",
+				"type": "String"
+			},
+			{
+				"name": "0DEBIT_LC",
+				"type": "String"
+			},
+			{
+				"name": "0DEB_CRE_LC",
+				"type": "String"
+			},
+			{
+				"name": "0DSC_AMT_LC",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_CREDIT_DC_AM",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_CREDIT_LC_AM",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_DEBIT_DC_AMO",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_DEBIT_LC_AMO",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_DEB_CRE_LC_A",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_DSC_AMT_LC_A",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_REC_COUNT",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETKP",
+				"type": "String"
+			},
+			{
+				"name": "YPPTRGT",
+				"type": "String"
+			},
+			{
+				"name": "0CLIENT",
+				"type": "String"
+			},
+			{
+				"name": "0CSM_USER___T",
+				"type": "String"
+			},
+			{
+				"name": "0CURRENCY",
+				"type": "String"
+			},
+			{
+				"name": "0CURRENCY___T",
+				"type": "String"
+			},
+			{
+				"name": "0DATEFROM",
+				"type": "String"
+			},
+			{
+				"name": "0DATEFROM___T",
+				"type": "String"
+			},
+			{
+				"name": "0DATETO",
+				"type": "String"
+			},
+			{
+				"name": "0DATETO___T",
+				"type": "String"
+			},
+			{
+				"name": "0DISTR_CHAN",
+				"type": "String"
+			},
+			{
+				"name": "0DISTR_CHAN___T",
+				"type": "String"
+			},
+			{
+				"name": "0DOC_CURRCY___T",
+				"type": "String"
+			},
+			{
+				"name": "0FISCPER",
+				"type": "String"
+			},
+			{
+				"name": "0FISCVARNT",
+				"type": "String"
+			},
+			{
+				"name": "0FI_AWTYP___T",
+				"type": "String"
+			},
+			{
+				"name": "0FI_DSBITEM",
+				"type": "String"
+			},
+			{
+				"name": "0LOC_CURRCY___T",
+				"type": "String"
+			},
+			{
+				"name": "0SALESORG",
+				"type": "String"
+			},
+			{
+				"name": "0SALESORG___T",
+				"type": "String"
+			},
+			{
+				"name": "0USERNAME",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_BIC_YNEWVALU",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_BIC_YOBJECTI",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_CLEARINGDATE",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_CREATIONGDAT",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_DATETIMEF04",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_DATETIMEL04",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_HISTCOORD",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_HISTPROCE",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_RECEIVINGDAT",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_STATUSRDATE",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_STATUSTDATE",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_UDATE1",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_UDATE1___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_VALUE_NEW1",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YBDAYSRE",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YDCAGE",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YDOC_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YFIBEGDA1",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YFIBEGDA1___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YFIBEGDA2",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YFIBEGDA2___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YFIBEGDA3",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YFIBEGDA3___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YFIBEGDA4",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YFIBEGDA4___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YFIWKDS1",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YGTNINVO",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YGTPGTXT",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YGTPSTAT",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YGTPSTD",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YGTPSTD___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_YGTPTNUM",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_Y_CL_PER",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_CLDA",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_CLDA___T",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_CRDA",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_CRDA___T",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_PROC",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_RCOD",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_RCOD___T",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_SPRO",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_SPRO___T",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_STAT",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_STAT___T",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "CCSM_TYPE___T",
+				"type": "String"
+			},
+			{
+				"name": "CDPM_COOR",
+				"type": "String"
+			},
+			{
+				"name": "CDPM_DCAS",
+				"type": "String"
+			},
+			{
+				"name": "CDPM_DCAS___T",
+				"type": "String"
+			},
+			{
+				"name": "CDPM_DCAS__0G_CWWSCR",
+				"type": "String"
+			},
+			{
+				"name": "CDPM_DCAS__0G_CWWSCR___T",
+				"type": "String"
+			},
+			{
+				"name": "CDPM_PROS",
+				"type": "String"
+			},
+			{
+				"name": "CDPM_STAT",
+				"type": "String"
+			},
+			{
+				"name": "CDPM_STAT___T",
+				"type": "String"
+			},
+			{
+				"name": "YBDAYS",
+				"type": "String"
+			},
+			{
+				"name": "YBDAYSCO",
+				"type": "String"
+			},
+			{
+				"name": "YBDAYSPR",
+				"type": "String"
+			},
+			{
+				"name": "YDMAUTSTA",
+				"type": "String"
+			},
+			{
+				"name": "YDMAUTSTA___T",
+				"type": "String"
+			},
+			{
+				"name": "YDMDATFRM",
+				"type": "String"
+			},
+			{
+				"name": "YDMDATFRM___T",
+				"type": "String"
+			},
+			{
+				"name": "YDMDATTO",
+				"type": "String"
+			},
+			{
+				"name": "YDMDATTO___T",
+				"type": "String"
+			},
+			{
+				"name": "YDM_PROSN",
+				"type": "String"
+			},
+			{
+				"name": "YFCCLAIM",
+				"type": "String"
+			},
+			{
+				"name": "YFCCLAIM___T",
+				"type": "String"
+			},
+			{
+				"name": "YFIWKDS",
+				"type": "String"
+			},
+			{
+				"name": "YGDUDATE",
+				"type": "String"
+			},
+			{
+				"name": "YGDUDATE___T",
+				"type": "String"
+			},
+			{
+				"name": "YGTKTAAR",
+				"type": "String"
+			},
+			{
+				"name": "YGTKTAAR___T",
+				"type": "String"
+			},
+			{
+				"name": "YGTKTAST",
+				"type": "String"
+			},
+			{
+				"name": "YGTKTAST___T",
+				"type": "String"
+			},
+			{
+				"name": "YVEMAIL",
+				"type": "String"
+			},
+			{
+				"name": "Y_EXTRDAT",
+				"type": "String"
+			},
+			{
+				"name": "Y_EXTRDAT___T",
+				"type": "String"
+			},
+			{
+				"name": "4Y6FC12CP0_CDPM_ORIA",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[pps].[Y6FC12CP0]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

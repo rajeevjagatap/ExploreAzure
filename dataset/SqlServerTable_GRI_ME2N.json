@@ -1,0 +1,112 @@
+{
+	"name": "SqlServerTable_GRI_ME2N",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SQLSERVER_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "S2P"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "Purch.Doc.",
+				"type": "String"
+			},
+			{
+				"name": "Item",
+				"type": "String"
+			},
+			{
+				"name": "Cat",
+				"type": "String"
+			},
+			{
+				"name": "Created by",
+				"type": "String"
+			},
+			{
+				"name": "Vendor/supplying plant",
+				"type": "String"
+			},
+			{
+				"name": "Ship To Name",
+				"type": "String"
+			},
+			{
+				"name": "Plant",
+				"type": "String"
+			},
+			{
+				"name": "PGr",
+				"type": "String"
+			},
+			{
+				"name": "BillOfLad.",
+				"type": "String"
+			},
+			{
+				"name": "Matl Group",
+				"type": "String"
+			},
+			{
+				"name": "Material",
+				"type": "String"
+			},
+			{
+				"name": "Short Text",
+				"type": "String"
+			},
+			{
+				"name": "Material Description",
+				"type": "String"
+			},
+			{
+				"name": "A",
+				"type": "String"
+			},
+			{
+				"name": "D",
+				"type": "String"
+			},
+			{
+				"name": "TrackingNo",
+				"type": "String"
+			},
+			{
+				"name": "Grp",
+				"type": "String"
+			},
+			{
+				"name": "Strat",
+				"type": "String"
+			},
+			{
+				"name": "Our Ref.",
+				"type": "String"
+			},
+			{
+				"name": "Quantity",
+				"type": "String"
+			},
+			{
+				"name": "Net Value",
+				"type": "String"
+			},
+			{
+				"name": "POrg",
+				"type": "String"
+			},
+			{
+				"name": "File Name",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[gri].[ME2N]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,104 @@
+{
+	"name": "pipeline3",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_GRIR_FBL3N",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "me2n/"
+					},
+					{
+						"name": "Destination",
+						"value": "[gri].[ME2N]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE gri.FBL3N"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "LS_PROD_SAP_BLOB_S2P",
+							"type": "LinkedServiceReference"
+						},
+						"path": "azure-webjobs-hosts"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"G/L": "G/L",
+							"Offst.acct": "Offst.acct",
+							"Plnt": "Plnt",
+							"Reference": "Reference",
+							"Purch.Doc.": "Purch.Doc.",
+							" Item": "Item",
+							"CoCd": "CoCd",
+							"DocumentNo": "DocumentNo",
+							"Transaction Code": "Transaction Code",
+							"Material": "Material",
+							"Assignment": "Assignment",
+							"User name": "User name",
+							"Profit Ctr": "Profit Ctr",
+							"Text": "Text",
+							"Document Header Text": "Document Header Text",
+							"Clrng doc.": "Clrng doc.",
+							"         Quantity": "Quantity",
+							"Amount in local cur.": "Amount in local cur.",
+							"LCurr": "LCurr",
+							"Amount in doc. curr.": "Amount in doc. curr.",
+							"Curr.": "Curr.",
+							"Pstng Date": "Pstng Date",
+							"Entry Date": "Entry Date",
+							"Doc. Date": "Doc. Date",
+							"Cost Ctr": "Cost Ctr",
+							"Reference Key": "Reference Key",
+							"BUn": "BUn",
+							" Eff.ex.rate": "Eff.ex.rate",
+							"WBS element": "WBS element",
+							"Type": "Type",
+							"Order": "Order",
+							"Vendor": "Vendor",
+							"File Name": "File Name"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureBlob_FBL3N",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SqlServerTable_GRI_FBL3N",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "S2P"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

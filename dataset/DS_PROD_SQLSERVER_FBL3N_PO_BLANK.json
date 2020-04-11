@@ -1,0 +1,142 @@
+{
+	"name": "DS_PROD_SQLSERVER_FBL3N_PO_BLANK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "G/L",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Offst.acct",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Plnt",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Purch.Doc.",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CoCd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DocumentNo",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Transaction Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Material",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Assignment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "User name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Profit Ctr",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Document Header Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Clrng doc.",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quantity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Amount in local cur.",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LCurr",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Amount in doc. curr.",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Curr.",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pstng Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Entry Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Doc. Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Cost Ctr",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reference Key",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BUn",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Eff.ex.rate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WBS element",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "gri",
+			"table": "FBL3N_PO_BLANK"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

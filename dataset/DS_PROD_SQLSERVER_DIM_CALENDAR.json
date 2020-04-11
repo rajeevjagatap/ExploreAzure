@@ -1,0 +1,30 @@
+{
+	"name": "DS_PROD_SQLSERVER_DIM_CALENDAR",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE_SQLDB_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "YearMonth",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YearMonthLong",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Year",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "pps",
+			"table": "Shared_Dim_Calendar"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

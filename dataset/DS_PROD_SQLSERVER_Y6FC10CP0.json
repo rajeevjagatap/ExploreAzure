@@ -1,0 +1,732 @@
+{
+	"name": "DS_PROD_SQLSERVER_Y6FC10CP0",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PROD_SQLSERVER_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Performance Pulse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "0CALMONTH",
+				"type": "String"
+			},
+			{
+				"name": "0CALMONTH___T",
+				"type": "String"
+			},
+			{
+				"name": "0CALYEAR",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET___T",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE",
+				"type": "String"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE___T",
+				"type": "String"
+			},
+			{
+				"name": "0INFOPROV",
+				"type": "String"
+			},
+			{
+				"name": "AC_RECONCILE",
+				"type": "String"
+			},
+			{
+				"name": "AC_TO_RECONC",
+				"type": "String"
+			},
+			{
+				"name": "AGGR_DATE",
+				"type": "String"
+			},
+			{
+				"name": "AGGR_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "APP_DATE",
+				"type": "String"
+			},
+			{
+				"name": "APP_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "AUDIT_DATE",
+				"type": "String"
+			},
+			{
+				"name": "AUDIT_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "AUDIT_MONTH",
+				"type": "String"
+			},
+			{
+				"name": "AUDIT_MONTH___T",
+				"type": "String"
+			},
+			{
+				"name": "AUDIT_RESULT",
+				"type": "String"
+			},
+			{
+				"name": "BUSINESS",
+				"type": "String"
+			},
+			{
+				"name": "CASE_ID",
+				"type": "String"
+			},
+			{
+				"name": "CASE_NUM",
+				"type": "String"
+			},
+			{
+				"name": "CASE_URGENCY",
+				"type": "String"
+			},
+			{
+				"name": "CLEAR_DATE",
+				"type": "String"
+			},
+			{
+				"name": "CLEAR_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "CLOSED_BY",
+				"type": "String"
+			},
+			{
+				"name": "CMD_DATE",
+				"type": "String"
+			},
+			{
+				"name": "CMD_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "COMMENTS",
+				"type": "String"
+			},
+			{
+				"name": "COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "COUNTRY_CODE",
+				"type": "String"
+			},
+			{
+				"name": "CREATION_DAT",
+				"type": "String"
+			},
+			{
+				"name": "CREATION_DAT___T",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMER",
+				"type": "String"
+			},
+			{
+				"name": "CUST_NAME",
+				"type": "String"
+			},
+			{
+				"name": "DATE_AUDITED",
+				"type": "String"
+			},
+			{
+				"name": "DATE_AUDITED___T",
+				"type": "String"
+			},
+			{
+				"name": "DATE_COMPLET",
+				"type": "String"
+			},
+			{
+				"name": "DATE_COMPLET___T",
+				"type": "String"
+			},
+			{
+				"name": "DATE_EXECUTE",
+				"type": "String"
+			},
+			{
+				"name": "DATE_EXECUTE___T",
+				"type": "String"
+			},
+			{
+				"name": "DATE_RECEIVE",
+				"type": "String"
+			},
+			{
+				"name": "DATE_RECEIVE___T",
+				"type": "String"
+			},
+			{
+				"name": "DEADLINE",
+				"type": "String"
+			},
+			{
+				"name": "DEADLINE___T",
+				"type": "String"
+			},
+			{
+				"name": "DEAD_DATE",
+				"type": "String"
+			},
+			{
+				"name": "DEAD_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "DOC_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "EMPLOYEE",
+				"type": "String"
+			},
+			{
+				"name": "EMPLOYEE_NAM",
+				"type": "String"
+			},
+			{
+				"name": "EMPTY",
+				"type": "String"
+			},
+			{
+				"name": "ERROR_DESC",
+				"type": "String"
+			},
+			{
+				"name": "ERROR_DETECT",
+				"type": "String"
+			},
+			{
+				"name": "FIRST_CONT_R",
+				"type": "String"
+			},
+			{
+				"name": "INV_DATE",
+				"type": "String"
+			},
+			{
+				"name": "INV_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "INV_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "MARKET_CODE",
+				"type": "String"
+			},
+			{
+				"name": "MASS_DAY",
+				"type": "String"
+			},
+			{
+				"name": "NO_ACCOUTNS",
+				"type": "String"
+			},
+			{
+				"name": "ON_TIME",
+				"type": "String"
+			},
+			{
+				"name": "ON_TIME_NO_M",
+				"type": "String"
+			},
+			{
+				"name": "OPENED_DATET",
+				"type": "String"
+			},
+			{
+				"name": "OPENED_DATET___T",
+				"type": "String"
+			},
+			{
+				"name": "ORIGIN",
+				"type": "String"
+			},
+			{
+				"name": "PAYROLL_PERI",
+				"type": "String"
+			},
+			{
+				"name": "PERIOD",
+				"type": "String"
+			},
+			{
+				"name": "PERSONAL_ARE",
+				"type": "String"
+			},
+			{
+				"name": "PER_NUM",
+				"type": "String"
+			},
+			{
+				"name": "PROCESSOR",
+				"type": "String"
+			},
+			{
+				"name": "REASON_BLOCK",
+				"type": "String"
+			},
+			{
+				"name": "REASON_PARKI",
+				"type": "String"
+			},
+			{
+				"name": "RECEIVED_ON",
+				"type": "String"
+			},
+			{
+				"name": "RECONC_DATE",
+				"type": "String"
+			},
+			{
+				"name": "RECONC_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "RECONC_MONTH",
+				"type": "String"
+			},
+			{
+				"name": "RECONC_MONTH___T",
+				"type": "String"
+			},
+			{
+				"name": "RECON_MONTH",
+				"type": "String"
+			},
+			{
+				"name": "RECON_MONTH___T",
+				"type": "String"
+			},
+			{
+				"name": "RECORD_NO",
+				"type": "String"
+			},
+			{
+				"name": "REPORT_MONTH",
+				"type": "String"
+			},
+			{
+				"name": "REPORT_MONTH___T",
+				"type": "String"
+			},
+			{
+				"name": "REP_MONTH",
+				"type": "String"
+			},
+			{
+				"name": "REP_MONTH___T",
+				"type": "String"
+			},
+			{
+				"name": "REP_PROVIDED",
+				"type": "String"
+			},
+			{
+				"name": "REQUESTOR",
+				"type": "String"
+			},
+			{
+				"name": "REQUEST_ID",
+				"type": "String"
+			},
+			{
+				"name": "REQUEST_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "REQ_ACCURATE",
+				"type": "String"
+			},
+			{
+				"name": "REQ_DATE",
+				"type": "String"
+			},
+			{
+				"name": "REQ_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "REQ_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "RESOLVED_BY",
+				"type": "String"
+			},
+			{
+				"name": "RESOLVED_DAT",
+				"type": "String"
+			},
+			{
+				"name": "RESOLVED_DAT___T",
+				"type": "String"
+			},
+			{
+				"name": "RESOL_DATE",
+				"type": "String"
+			},
+			{
+				"name": "RESOL_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "RESO_DATE",
+				"type": "String"
+			},
+			{
+				"name": "RESO_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "RPROC_DATE",
+				"type": "String"
+			},
+			{
+				"name": "RPROC_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "RREC_DATE",
+				"type": "String"
+			},
+			{
+				"name": "RREC_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "RWRK_DATE",
+				"type": "String"
+			},
+			{
+				"name": "RWRK_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "SENT_TO",
+				"type": "String"
+			},
+			{
+				"name": "SLA_EXT_DATE",
+				"type": "String"
+			},
+			{
+				"name": "SLA_EXT_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "SOURCE_ERROR",
+				"type": "String"
+			},
+			{
+				"name": "SSC_ERROR",
+				"type": "String"
+			},
+			{
+				"name": "STATUS",
+				"type": "String"
+			},
+			{
+				"name": "SUBMIT_DATE",
+				"type": "String"
+			},
+			{
+				"name": "SUBMIT_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "SUB_DATE",
+				"type": "String"
+			},
+			{
+				"name": "SUB_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "TARGET_DATE",
+				"type": "String"
+			},
+			{
+				"name": "TARGET_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "TICKET",
+				"type": "String"
+			},
+			{
+				"name": "TIER1_ACT_DA",
+				"type": "String"
+			},
+			{
+				"name": "TIER1_ACT_DA___T",
+				"type": "String"
+			},
+			{
+				"name": "TIER1_INT_DA",
+				"type": "String"
+			},
+			{
+				"name": "TIER1_INT_DA___T",
+				"type": "String"
+			},
+			{
+				"name": "TIER1_WAIT_D",
+				"type": "String"
+			},
+			{
+				"name": "TIER1_WORKON",
+				"type": "String"
+			},
+			{
+				"name": "TIER1_WORKON___T",
+				"type": "String"
+			},
+			{
+				"name": "TIER2_ACT_DA",
+				"type": "String"
+			},
+			{
+				"name": "TIER2_ACT_DA___T",
+				"type": "String"
+			},
+			{
+				"name": "TIER2_INT_DA",
+				"type": "String"
+			},
+			{
+				"name": "TIER2_INT_DA___T",
+				"type": "String"
+			},
+			{
+				"name": "TIER3_ACT_DA",
+				"type": "String"
+			},
+			{
+				"name": "TIER3_ACT_DA___T",
+				"type": "String"
+			},
+			{
+				"name": "TIER3_INT_DA",
+				"type": "String"
+			},
+			{
+				"name": "TIER3_INT_DA___T",
+				"type": "String"
+			},
+			{
+				"name": "TR_EXECUTED",
+				"type": "String"
+			},
+			{
+				"name": "TR_TO_EXECUT",
+				"type": "String"
+			},
+			{
+				"name": "TYPE_REQ",
+				"type": "String"
+			},
+			{
+				"name": "TYPE_REQUEST",
+				"type": "String"
+			},
+			{
+				"name": "UNIT",
+				"type": "String"
+			},
+			{
+				"name": "UPDREQ_CORRE",
+				"type": "String"
+			},
+			{
+				"name": "URGENT",
+				"type": "String"
+			},
+			{
+				"name": "USERNAME",
+				"type": "String"
+			},
+			{
+				"name": "VENDOR",
+				"type": "String"
+			},
+			{
+				"name": "WF_DATE",
+				"type": "String"
+			},
+			{
+				"name": "WF_DATE___T",
+				"type": "String"
+			},
+			{
+				"name": "YDATE",
+				"type": "String"
+			},
+			{
+				"name": "YDATE___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETRIC___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPPROV",
+				"type": "String"
+			},
+			{
+				"name": "YPPPROV___T",
+				"type": "String"
+			},
+			{
+				"name": "YINFOPROV",
+				"type": "String"
+			},
+			{
+				"name": "YPPFILEID",
+				"type": "String"
+			},
+			{
+				"name": "YPPFITMST",
+				"type": "String"
+			},
+			{
+				"name": "YPPSSC",
+				"type": "String"
+			},
+			{
+				"name": "YPPSSC___T",
+				"type": "String"
+			},
+			{
+				"name": "YPPSTAGE",
+				"type": "String"
+			},
+			{
+				"name": "YPPSTAGE___T",
+				"type": "String"
+			},
+			{
+				"name": "DENIED",
+				"type": "String"
+			},
+			{
+				"name": "NUM_CHG_REQ",
+				"type": "String"
+			},
+			{
+				"name": "NUM_EMP_DATA",
+				"type": "String"
+			},
+			{
+				"name": "NUM_IMP_EMPS",
+				"type": "String"
+			},
+			{
+				"name": "NUM_INACT_CH",
+				"type": "String"
+			},
+			{
+				"name": "NUM_INACT_OM",
+				"type": "String"
+			},
+			{
+				"name": "NUM_OM_DATA",
+				"type": "String"
+			},
+			{
+				"name": "NUM_OM_DAT_0",
+				"type": "String"
+			},
+			{
+				"name": "REC_COUNT",
+				"type": "String"
+			},
+			{
+				"name": "SURVEY_RES",
+				"type": "String"
+			},
+			{
+				"name": "TOT_CALLS_AB",
+				"type": "String"
+			},
+			{
+				"name": "TOT_CALLS_AN",
+				"type": "String"
+			},
+			{
+				"name": "TOT_CALLS_RE",
+				"type": "String"
+			},
+			{
+				"name": "TOT_CALLS_WA",
+				"type": "String"
+			},
+			{
+				"name": "TOT_NUM_CALL",
+				"type": "String"
+			},
+			{
+				"name": "YPPMETKP",
+				"type": "String"
+			},
+			{
+				"name": "YPPTRGT",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[pps].[Y6FC10CP0]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

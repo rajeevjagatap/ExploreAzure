@@ -1,0 +1,47 @@
+{
+	"name": "DS_PROD_SQLSERVER_UPDATELOG",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COMPOSITE_PROVIDER",
+				"type": "varchar"
+			},
+			{
+				"name": "CALMONTH",
+				"type": "varchar"
+			},
+			{
+				"name": "YPPMETRIC",
+				"type": "varchar"
+			},
+			{
+				"name": "COMP_CODE__YGZONE",
+				"type": "varchar"
+			},
+			{
+				"name": "STATUS_COPY_DATA",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "STATUS_SP_CONVERT_TO_METRIC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DATE_TIME",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[pps].[UPDATELOG]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

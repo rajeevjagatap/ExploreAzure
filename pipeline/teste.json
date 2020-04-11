@@ -1,0 +1,144 @@
+{
+	"name": "teste",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set Year",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "vYear",
+					"value": {
+						"value": "@if\n(\n    equals(formatDateTime(utcnow(),'MM'),01), \n    string(sub(int(formatDateTime(utcnow(),'yyyy')) ,1)), \n    formatDateTime(utcnow(),'yyyy')\n)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set Month",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set Year",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "vMonth",
+					"value": {
+						"value": "@if\n(\n    equals(formatDateTime(utcnow(),'MM'),01), \n    '11',\n    if(\n        equals(formatDateTime(utcnow(),'MM'),02), \n        '12',\n        formatDateTime(utcnow(),'MM')\n    )\n)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Select Period Metric and Zone Code",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Set Month",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RelationalSource",
+						"query": {
+							"value": "SELECT \n\t\"0CALMONTH\" AS CALMONTH\n   ,\"YPPMETRIC\"\n   ,\"0COMP_CODE__YGZONE\" AS COMP_CODE__YGZONE\nFROM \n   \"_SYS_BIC\".\"system-local.bw.bw2hana/Y6FC11CP0\"\nWHERE \n   \"0CALMONTH\" >= '@{concat(variables('vYear'), variables('vMonth'))}'\nGROUP BY \n\t\"0CALMONTH\"\n   ,\"YPPMETRIC\"\n   ,\"0COMP_CODE__YGZONE\"",
+							"type": "Expression"
+						}
+					},
+					"dataset": {
+						"referenceName": "DS_PROD_HANA_Y6FC11CP0",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Select Period Metric and Zone Code",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Select Period Metric and Zone Code').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Lookup2",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "SELECT NULL AS '@{item().YPPMETRIC}'",
+										"type": "Expression"
+									}
+								},
+								"dataset": {
+									"referenceName": "DS_PROD_SQLSERVER_Y6FC11CP0",
+									"type": "DatasetReference"
+								},
+								"firstRowOnly": false
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"vYear": {
+				"type": "String"
+			},
+			"vMonth": {
+				"type": "String"
+			},
+			"Period": {
+				"type": "Array"
+			},
+			"Metric": {
+				"type": "Array"
+			},
+			"ZoneCode": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "Test"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,154 @@
+{
+	"name": "DS_PROD_SQLSERVER_PPULSE_Y6FC17CP0",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURE_SQLDB_PPULSE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "0CALMONTH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CALMONTH___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0CALYEAR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__0COUNTRY___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGMARKET___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COMP_CODE__YGZONE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COUNTRY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0COUNTRY___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0INFOPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0RECORDTP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0REQTSN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0UNIT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "0UNIT___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YGMARKET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YGMARKET___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YGZONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YGZONE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPMETRIC___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPROV",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPPROV___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSSC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSSC___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSTAGE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPSTAGE___T",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YDEN01",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YNUM01",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YPPTRGT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "1ROWCOUNT",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "pps",
+			"table": "Y6FC17CP0"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
